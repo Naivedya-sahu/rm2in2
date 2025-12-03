@@ -1,0 +1,16 @@
+# Test Pattern - Transform: G_DirectFlipX
+# Description: Direct scale + flip X
+#
+# If this appears correctly on screen, this is the right transform!
+
+# Stroke 1
+PEN_DOWN 13470 7862
+PEN_MOVE 7496 7862
+PEN_UP
+DELAY 50
+
+# Stroke 2
+PEN_DOWN 10483 6182
+PEN_MOVE 10483 9543
+PEN_UP
+DELAY 50

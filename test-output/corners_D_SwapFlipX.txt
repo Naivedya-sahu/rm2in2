@@ -1,0 +1,24 @@
+# Test Pattern - Transform: D_SwapFlipX
+# Description: Swap axes + flip X
+#
+# If this appears correctly on screen, this is the right transform!
+
+# Stroke 1
+PEN_DOWN 840 15725
+PEN_UP
+DELAY 50
+
+# Stroke 2
+PEN_DOWN 840 1493
+PEN_UP
+DELAY 50
+
+# Stroke 3
+PEN_DOWN 14885 15725
+PEN_UP
+DELAY 50
+
+# Stroke 4
+PEN_DOWN 14885 1493
+PEN_UP
+DELAY 50
