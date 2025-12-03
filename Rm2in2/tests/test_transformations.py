@@ -234,9 +234,9 @@ def generate_pen_commands(strokes, transform, output_file):
         for point_idx, (svg_x, svg_y) in enumerate(stroke):
             wx, wy = transform.to_pen_command(svg_x, svg_y)
 
-            # Clamp to valid range
-            wx = max(0, min(WACOM_MAX_X, wx))
-            wy = max(0, min(WACOM_MAX_Y, wy))
+            # Clamp to valid display range
+            wx = max(0, min(DISPLAY_WIDTH, wx))
+            wy = max(0, min(DISPLAY_HEIGHT, wy))
 
             if point_idx == 0:
                 lines.append(f"PEN_DOWN {wx} {wy}")
