@@ -63,12 +63,12 @@ test-injection:
 test-patterns:
 	@echo "Generating test patterns..."
 	@mkdir -p test-output
-	@cd Rm2in2/tests && python test_transformations.py all ../../test-output
+	@cd Rm2in2/tests && python3 test_transformations.py all ../../test-output
 	@echo "✓ Test patterns generated in test-output/"
 	@echo ""
 	@echo "Test files created:"
 	@ls -1 test-output/ | head -8
-	@echo "  ... ($(shell ls test-output/ | wc -l) files total)"
+	@echo "  ... ($(shell ls test-output/ 2>/dev/null | wc -l) files total)"
 	@echo ""
 
 logs:
