@@ -71,6 +71,12 @@ test-patterns:
 	@echo "  ... ($(shell ls test-output/ 2>/dev/null | wc -l) files total)"
 	@echo ""
 
+test-all:
+	@echo "Interactive testing of all transformations..."
+	@echo "Usage: make test-all PATTERN=<corners|cross|grid|circle>"
+	@echo ""
+	@./Rm2in2/scripts/test_all_transforms.sh $(PATTERN) $(RM2_IP)
+
 logs:
 	@echo "Showing xochitl logs from RM2 (Ctrl+C to exit)..."
 	@ssh root@$(RM2_IP) "journalctl -u xochitl -f"
@@ -96,8 +102,9 @@ help:
 	@echo "  make test-injection - Send test pattern to RM2"
 	@echo ""
 	@echo "Testing:"
-	@echo "  make test-patterns  - Generate coordinate test patterns"
-	@echo "  make logs           - View xochitl logs from RM2"
+	@echo "  make test-patterns              - Generate coordinate test patterns"
+	@echo "  make test-all PATTERN=corners   - Interactive testing (all 8 transforms)"
+	@echo "  make logs                       - View xochitl logs from RM2"
 	@echo ""
 	@echo "Configuration:"
 	@echo "  RM2_IP=$(RM2_IP)    - Change with: make deploy RM2_IP=192.168.1.100"
@@ -112,11 +119,14 @@ help:
 	@echo "  3. Check status:"
 	@echo "       make status"
 	@echo ""
-	@echo "  4. Generate and test patterns:"
+	@echo "  4. Interactive testing (recommended):"
 	@echo "       make test-patterns"
+	@echo "       make test-all PATTERN=corners"
+	@echo ""
+	@echo "  5. Or manual testing:"
 	@echo "       ./Rm2in2/scripts/send.sh test-output/corners_A_Direct.txt"
 	@echo ""
-	@echo "  5. Stop when done:"
+	@echo "  6. Stop when done:"
 	@echo "       make stop"
 	@echo ""
 	@echo "Emergency Restore:"
