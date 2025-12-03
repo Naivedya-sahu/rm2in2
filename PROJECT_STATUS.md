@@ -46,12 +46,34 @@ rm2in2/
    - Sends PEN commands to RM2 via FIFO
    - Validates connectivity and hook status
 
-### ✅ Build System
+### ✅ Build System & Deployment
 
+**Build:**
 - `make server` - Build injection hook
-- `make deploy` - Deploy to RM2
-- `make test-patterns` - Generate all test patterns
 - `make clean` - Clean build artifacts
+
+**Deployment:**
+- `make deploy` - Deploy to RM2 with safety checks and backups
+- `make undeploy` - Complete removal from RM2
+
+**Service Management:**
+- `make start` - Start injection service (via SSH)
+- `make stop` - Stop and restore normal operation
+- `make restart` - Restart service
+- `make status` - Check service status
+- `make restore` - Emergency rollback
+
+**Testing:**
+- `make test-patterns` - Generate coordinate test patterns
+- `make test-injection` - Send test dot pattern
+- `make logs` - View xochitl logs in real-time
+
+**Features:**
+- ✅ Systemd service override (clean integration)
+- ✅ Automatic backups before deployment
+- ✅ Safety checks and validation
+- ✅ Emergency restore capability
+- ✅ Complete uninstall support
 
 ### ✅ Documentation
 
