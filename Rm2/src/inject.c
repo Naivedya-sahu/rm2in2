@@ -44,24 +44,33 @@
  * COORDINATE TRANSFORMATION
  * ============================================================================
  *
- * TODO: This is where transformation will go after testing!
+ * VERIFIED TRANSFORMATION (from captured pen events)
  *
- * Current behavior: PASS THROUGH (no transformation)
- * PEN command (x, y) -> Wacom ABS_X = x, ABS_Y = y
+ * Display coordinates (portrait 1404×1872) → Wacom sensor (20966×15725)
  *
- * This allows test_transformations.py to test different formulas.
+ * The Wacom sensor is rotated 90° relative to the display AND vertically flipped:
+ *   - Display X (horizontal) → Sensor Y
+ *   - Display Y (vertical) → Inverted Sensor X
+ *
+ * Test results that confirmed this:
+ *   Display Top-Left (0,0) → Sensor (20820, 90)
+ *   Display Top-Right (1404,0) → Sensor (20822, 15551)
+ *   Display Bottom-Left (0,1872) → Sensor (211, 138)
+ *   Display Bottom-Right (1404,1872) → Sensor (269, 15712)
+ *   Display Center (702,936) → Sensor (10875, 7366)
  */
 
+#define DISPLAY_WIDTH 1404
+#define DISPLAY_HEIGHT 1872
+
 static inline int to_wacom_x(int pen_x, int pen_y) {
-    // NO TRANSFORMATION - pass through for testing
-    (void)pen_y;  // Unused for now
-    return pen_x;
+    // Display Y maps to inverted Sensor X
+    return WACOM_MAX_X - (pen_y * WACOM_MAX_X / DISPLAY_HEIGHT);
 }
 
 static inline int to_wacom_y(int pen_x, int pen_y) {
-    // NO TRANSFORMATION - pass through for testing
-    (void)pen_x;  // Unused for now
-    return pen_y;
+    // Display X maps to Sensor Y
+    return pen_x * WACOM_MAX_Y / DISPLAY_WIDTH;
 }
 
 /* ============================================================================
