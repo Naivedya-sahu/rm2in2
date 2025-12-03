@@ -93,20 +93,65 @@ The relationship between these coordinate spaces needs verification:
 - [ ] Documentation and examples
 - [ ] Installation automation
 
-## Building
+## Quick Start
+
+### 1. Build and Deploy
 
 ```bash
-# Not yet implemented - coordinate testing phase
-make
+# Build injection hook
+make server
+
+# Deploy to RM2 (with automatic backups and safety checks)
+make deploy RM2_IP=10.11.99.1
 ```
+
+### 2. Start Service
+
+```bash
+# Start injection service on RM2
+make start
+
+# Check if running
+make status
+```
+
+### 3. Test Coordinate System
+
+```bash
+# Generate all test patterns (32 files)
+make test-patterns
+
+# Send test patterns one by one
+./Rm2in2/scripts/send.sh test-output/corners_A_Direct.txt
+./Rm2in2/scripts/send.sh test-output/corners_B_Swap.txt
+# ... test all 8 transforms
+
+# Watch logs in real-time
+make logs
+```
+
+### 4. Stop When Done
+
+```bash
+# Stop service and restore normal operation
+make stop
+```
+
+## Deployment System
+
+The project uses a **robust service-based deployment** with:
+
+- ✅ **Systemd Integration** - Clean service override approach
+- ✅ **Automatic Backups** - Before every deployment
+- ✅ **Safety Checks** - Validates files and connectivity
+- ✅ **Easy Rollback** - `make restore` for emergency recovery
+- ✅ **Complete Uninstall** - `make undeploy` for clean removal
+
+See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for complete details.
 
 ## Testing
 
-```bash
-# Coordinate system testing (coming soon)
-cd Rm2in2/tests
-python coordinate_test.py
-```
+See [TESTING_GUIDE.md](TESTING_GUIDE.md) for the complete testing workflow to find the correct coordinate transformation.
 
 ## Contributing
 
