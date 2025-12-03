@@ -1,0 +1,9 @@
+# Transformation Test 6: Swap + flip Y
+
+PEN_DOWN 14725 1000  # origin
+PEN_MOVE 14725 3000  # right
+PEN_MOVE 14725 1000  # back to origin
+PEN_MOVE 12725 1000  # down
+PEN_UP
+
+# Number 6

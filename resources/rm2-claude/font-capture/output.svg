@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1404"
+   height="1872"
+   viewBox="0 0 1404 1872"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="output.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="156.07116"
+     inkscape:cx="51.072858"
+     inkscape:cy="60.757543"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>PEN Commands converted to SVG</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Strokes"
+     inkscape:groupmode="layer">
+    <path
+       id="stroke_1"
+       inkscape:label="Stroke 1 (14 points)"
+       style="fill:none;fill-opacity:1;stroke:#0066cc;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 51.968365,60.967352 -0.838999,0.47716 -0.956567,0.128761 -0.645175,-0.319607 -0.275168,-0.6385 0.355119,-0.716862 0.472685,-0.368467 0.683637,-0.163529 0.161293,0.0799 0.162039,0.281147 -0.239705,0.48388 -0.437257,0.274423 -0.361794,0.122086 -0.522352,0.243408" />
+  </g>
+</svg>

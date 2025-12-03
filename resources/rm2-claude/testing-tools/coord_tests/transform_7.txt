@@ -1,0 +1,9 @@
+# Transformation Test 7: Swap + flip X
+
+PEN_DOWN 1000 19966  # origin
+PEN_MOVE 1000 17966  # right
+PEN_MOVE 1000 19966  # back to origin
+PEN_MOVE 3000 19966  # down
+PEN_UP
+
+# Number 7

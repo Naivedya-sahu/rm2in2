@@ -1,0 +1,9 @@
+# Transformation Test 4: Flip both (180° rotation)
+
+PEN_DOWN 19966 14725  # origin
+PEN_MOVE 17966 14725  # right
+PEN_MOVE 19966 14725  # back to origin
+PEN_MOVE 19966 12725  # down
+PEN_UP
+
+# Number 4

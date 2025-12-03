@@ -1,0 +1,9 @@
+# Transformation Test 8: Swap + flip both
+
+PEN_DOWN 14725 19966  # origin
+PEN_MOVE 14725 17966  # right
+PEN_MOVE 14725 19966  # back to origin
+PEN_MOVE 12725 19966  # down
+PEN_UP
+
+# Number 8

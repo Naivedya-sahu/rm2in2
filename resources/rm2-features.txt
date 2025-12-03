@@ -1,0 +1,1721 @@
+Microsoft Windows [Version 10.0.26100.7171]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\NAVY>ping 10.11.99.1
+root@reMarkable:~# ls -la /dev/
+drwxr-xr-x    9 root     root          3080 Oct 25 13:08 .
+drwxr-xr-x   17 root     root          1024 Oct 18 09:54 ..
+crw-r--r--    1 root     root       10, 235 Oct 25 12:50 autofs
+drwxr-xr-x    2 root     root           340 Oct 25 12:51 block
+crw-------    1 root     root       10,  63 Oct 25 12:50 caam-keygen
+drwxr-xr-x    2 root     root          2560 Oct 26 01:07 char
+crw-------    1 root     root        5,   1 Oct 25 12:50 console
+crw-------    1 root     root       10,  62 Oct 25 12:50 cpu_dma_latency
+drwxr-xr-x    7 root     root           140 Oct 25 12:50 disk
+crw-rw----    1 root     video      29,   0 Oct 25 12:50 fb0
+lrwxrwxrwx    1 root     root            13 Oct 25 12:50 fd -> /proc/self/fd
+crw-rw-rw-    1 root     root        1,   7 Oct 25 12:50 full
+crw-rw-rw-    1 root     root       10, 229 Oct 25 12:50 fuse
+crw-------    1 root     root      254,   0 Oct 25 12:50 gpiochip0
+crw-------    1 root     root      254,   1 Oct 25 12:50 gpiochip1
+crw-------    1 root     root      254,   2 Oct 25 12:50 gpiochip2
+crw-------    1 root     root      254,   3 Oct 25 12:50 gpiochip3
+crw-------    1 root     root      254,   4 Oct 25 12:50 gpiochip4
+crw-------    1 root     root      254,   5 Oct 25 12:50 gpiochip5
+crw-------    1 root     root      254,   6 Oct 25 12:50 gpiochip6
+crw-------    1 root     root       10, 183 Oct 25 12:50 hwrng
+crw-------    1 root     root       89,   0 Oct 25 12:50 i2c-0
+crw-------    1 root     root       89,   1 Oct 25 12:50 i2c-1
+crw-------    1 root     root       89,   2 Oct 25 12:50 i2c-2
+crw-------    1 root     root       89,   3 Oct 25 12:50 i2c-3
+lrwxrwxrwx    1 root     root            12 Oct 25 12:50 initctl -> /run/initctl
+drwxr-xr-x    3 root     root           140 Oct 25 12:50 input
+crw-r--r--    1 root     root        1,  11 Oct 25 12:50 kmsg
+lrwxrwxrwx    1 root     root            28 Oct 25 12:50 log -> /run/systemd/journal/dev-log
+crw-rw----    1 root     disk       10, 237 Oct 25 12:50 loop-control
+brw-rw----    1 root     disk        7,   0 Oct 25 12:50 loop0
+brw-rw----    1 root     disk        7,   1 Oct 25 12:50 loop1
+brw-rw----    1 root     disk        7,   2 Oct 25 12:50 loop2
+brw-rw----    1 root     disk        7,   3 Oct 25 12:50 loop3
+brw-rw----    1 root     disk        7,   4 Oct 25 12:50 loop4
+brw-rw----    1 root     disk        7,   5 Oct 25 12:50 loop5
+brw-rw----    1 root     disk        7,   6 Oct 25 12:50 loop6
+brw-rw----    1 root     disk        7,   7 Oct 25 12:50 loop7
+drwxr-xr-x    2 root     root            60 Jan  1  1970 mapper
+crw-r-----    1 root     kmem        1,   1 Oct 25 12:50 mem
+brw-rw----    1 root     disk      179,   0 Oct 25 12:50 mmcblk2
+brw-rw----    1 root     disk      179,   8 Oct 25 12:50 mmcblk2boot0
+brw-rw----    1 root     disk      179,  16 Oct 25 12:50 mmcblk2boot1
+brw-rw----    1 root     disk      179,   1 Oct 25 12:50 mmcblk2p1
+brw-rw----    1 root     disk      179,   2 Oct 25 12:50 mmcblk2p2
+brw-rw----    1 root     disk      179,   3 Oct 25 12:51 mmcblk2p3
+brw-rw----    1 root     disk      179,   4 Oct 25 12:50 mmcblk2p4
+crw-------    1 root     root      247,   0 Oct 25 12:50 mmcblk2rpmb
+crw-rw-rw-    1 root     root        1,   3 Oct 25 12:50 null
+crw-rw-rw-    1 root     tty         5,   2 Nov 22 10:21 ptmx
+drwxr-xr-x    2 root     root             0 Oct 25 12:50 pts
+crw-rw-rw-    1 root     root        1,   8 Oct 25 12:50 random
+crw-rw-r--    1 root     root       10, 242 Oct 25 12:50 rfkill
+lrwxrwxrwx    1 root     root             4 Oct 25 12:50 rtc -> rtc0
+crw-------    1 root     root      253,   0 Oct 25 12:50 rtc0
+drwxrwxrwt    2 root     root            40 Oct 25 12:50 shm
+lrwxrwxrwx    1 root     root            15 Oct 25 12:50 stderr -> /proc/self/fd/2
+lrwxrwxrwx    1 root     root            15 Oct 25 12:50 stdin -> /proc/self/fd/0
+lrwxrwxrwx    1 root     root            15 Oct 25 12:50 stdout -> /proc/self/fd/1
+crw-rw-rw-    1 root     tty         5,   0 Oct 25 12:50 tty
+crw--w----    1 root     tty         4,   0 Oct 25 12:50 tty0
+crw--w----    1 root     tty         4,   1 Oct 25 12:50 tty1
+crw--w----    1 root     tty         4,  10 Oct 25 12:50 tty10
+crw--w----    1 root     tty         4,  11 Oct 25 12:50 tty11
+crw--w----    1 root     tty         4,  12 Oct 25 12:50 tty12
+crw--w----    1 root     tty         4,  13 Oct 25 12:50 tty13
+crw--w----    1 root     tty         4,  14 Oct 25 12:50 tty14
+crw--w----    1 root     tty         4,  15 Oct 25 12:50 tty15
+crw--w----    1 root     tty         4,  16 Oct 25 12:50 tty16
+crw--w----    1 root     tty         4,  17 Oct 25 12:50 tty17
+crw--w----    1 root     tty         4,  18 Oct 25 12:50 tty18
+crw--w----    1 root     tty         4,  19 Oct 25 12:50 tty19
+crw--w----    1 root     tty         4,   2 Oct 25 12:50 tty2
+crw--w----    1 root     tty         4,  20 Oct 25 12:50 tty20
+crw--w----    1 root     tty         4,  21 Oct 25 12:50 tty21
+crw--w----    1 root     tty         4,  22 Oct 25 12:50 tty22
+crw--w----    1 root     tty         4,  23 Oct 25 12:50 tty23
+crw--w----    1 root     tty         4,  24 Oct 25 12:50 tty24
+crw--w----    1 root     tty         4,  25 Oct 25 12:50 tty25
+crw--w----    1 root     tty         4,  26 Oct 25 12:50 tty26
+crw--w----    1 root     tty         4,  27 Oct 25 12:50 tty27
+crw--w----    1 root     tty         4,  28 Oct 25 12:50 tty28
+crw--w----    1 root     tty         4,  29 Oct 25 12:50 tty29
+crw--w----    1 root     tty         4,   3 Oct 25 12:50 tty3
+crw--w----    1 root     tty         4,  30 Oct 25 12:50 tty30
+crw--w----    1 root     tty         4,  31 Oct 25 12:50 tty31
+crw--w----    1 root     tty         4,  32 Oct 25 12:50 tty32
+crw--w----    1 root     tty         4,  33 Oct 25 12:50 tty33
+crw--w----    1 root     tty         4,  34 Oct 25 12:50 tty34
+crw--w----    1 root     tty         4,  35 Oct 25 12:50 tty35
+crw--w----    1 root     tty         4,  36 Oct 25 12:50 tty36
+crw--w----    1 root     tty         4,  37 Oct 25 12:50 tty37
+crw--w----    1 root     tty         4,  38 Oct 25 12:50 tty38
+crw--w----    1 root     tty         4,  39 Oct 25 12:50 tty39
+crw--w----    1 root     tty         4,   4 Oct 25 12:50 tty4
+crw--w----    1 root     tty         4,  40 Oct 25 12:50 tty40
+crw--w----    1 root     tty         4,  41 Oct 25 12:50 tty41
+crw--w----    1 root     tty         4,  42 Oct 25 12:50 tty42
+crw--w----    1 root     tty         4,  43 Oct 25 12:50 tty43
+crw--w----    1 root     tty         4,  44 Oct 25 12:50 tty44
+crw--w----    1 root     tty         4,  45 Oct 25 12:50 tty45
+crw--w----    1 root     tty         4,  46 Oct 25 12:50 tty46
+crw--w----    1 root     tty         4,  47 Oct 25 12:50 tty47
+crw--w----    1 root     tty         4,  48 Oct 25 12:50 tty48
+crw--w----    1 root     tty         4,  49 Oct 25 12:50 tty49
+crw--w----    1 root     tty         4,   5 Oct 25 12:50 tty5
+crw--w----    1 root     tty         4,  50 Oct 25 12:50 tty50
+crw--w----    1 root     tty         4,  51 Oct 25 12:50 tty51
+crw--w----    1 root     tty         4,  52 Oct 25 12:50 tty52
+crw--w----    1 root     tty         4,  53 Oct 25 12:50 tty53
+crw--w----    1 root     tty         4,  54 Oct 25 12:50 tty54
+crw--w----    1 root     tty         4,  55 Oct 25 12:50 tty55
+crw--w----    1 root     tty         4,  56 Oct 25 12:50 tty56
+crw--w----    1 root     tty         4,  57 Oct 25 12:50 tty57
+crw--w----    1 root     tty         4,  58 Oct 25 12:50 tty58
+crw--w----    1 root     tty         4,  59 Oct 25 12:50 tty59
+crw--w----    1 root     tty         4,   6 Oct 25 12:50 tty6
+crw--w----    1 root     tty         4,  60 Oct 25 12:50 tty60
+crw--w----    1 root     tty         4,  61 Oct 25 12:50 tty61
+crw--w----    1 root     tty         4,  62 Oct 25 12:50 tty62
+crw--w----    1 root     tty         4,  63 Oct 25 12:50 tty63
+crw--w----    1 root     tty         4,   7 Oct 25 12:50 tty7
+crw--w----    1 root     tty         4,   8 Oct 25 12:50 tty8
+crw--w----    1 root     tty         4,   9 Oct 25 12:50 tty9
+crw--w----    1 root     tty       207,  16 Oct 25 12:50 ttymxc0
+crw-------    1 root     root       10, 223 Oct 25 12:50 uinput
+crw-rw-rw-    1 root     root        1,   9 Oct 25 12:50 urandom
+crw-rw----    1 root     tty         7,   0 Oct 25 12:50 vcs
+crw-rw----    1 root     tty         7,   1 Oct 25 12:50 vcs1
+crw-rw----    1 root     tty         7,   2 Oct 25 12:50 vcs2
+crw-rw----    1 root     tty         7,   3 Oct 25 12:50 vcs3
+crw-rw----    1 root     tty         7,   4 Oct 25 12:50 vcs4
+crw-rw----    1 root     tty         7,   5 Oct 25 12:50 vcs5
+crw-rw----    1 root     tty         7,   6 Oct 25 12:50 vcs6
+crw-rw----    1 root     tty         7,  63 Oct 25 13:08 vcs63
+crw-rw----    1 root     tty         7, 128 Oct 25 12:50 vcsa
+crw-rw----    1 root     tty         7, 129 Oct 25 12:50 vcsa1
+crw-rw----    1 root     tty         7, 130 Oct 25 12:50 vcsa2
+crw-rw----    1 root     tty         7, 131 Oct 25 12:50 vcsa3
+crw-rw----    1 root     tty         7, 132 Oct 25 12:50 vcsa4
+crw-rw----    1 root     tty         7, 133 Oct 25 12:50 vcsa5
+crw-rw----    1 root     tty         7, 134 Oct 25 12:50 vcsa6
+crw-rw----    1 root     tty         7, 191 Oct 26 01:07 vcsa63
+crw-rw----    1 root     tty         7,  64 Oct 25 12:50 vcsu
+crw-rw----    1 root     tty         7,  65 Oct 25 12:50 vcsu1
+crw-rw----    1 root     tty         7,  66 Oct 25 12:50 vcsu2
+crw-rw----    1 root     tty         7,  67 Oct 25 12:50 vcsu3
+crw-rw----    1 root     tty         7,  68 Oct 25 12:50 vcsu4
+crw-rw----    1 root     tty         7,  69 Oct 25 12:50 vcsu5
+crw-rw----    1 root     tty         7,  70 Oct 25 12:50 vcsu6
+crw-rw----    1 root     tty         7, 127 Oct 25 13:08 vcsu63
+crw-------    1 root     root       10, 130 Oct 25 12:50 watchdog
+crw-------    1 root     root      250,   0 Oct 25 12:50 watchdog0
+crw-rw-rw-    1 root     root        1,   5 Oct 25 12:50 zero
+root@reMarkable:~# cd dev/input
+-sh: cd: dev/input: No such file or directory
+root@reMarkable:~# cd /dev/input
+root@reMarkable:/dev/input# ls
+by-path       event0        event1        event2        touchscreen0
+root@reMarkable:/dev/input# la
+-sh: la: command not found
+root@reMarkable:/dev/input# ls -la\
+>
+drwxr-xr-x    3 root     root           140 Oct 25 12:50 .
+drwxr-xr-x    9 root     root          3080 Oct 25 13:08 ..
+drwxr-xr-x    2 root     root           100 Oct 25 12:50 by-path
+crw-rw----    1 root     input      13,  64 Oct 25 12:50 event0
+crw-rw----    1 root     input      13,  65 Oct 25 12:50 event1
+crw-rw----    1 root     input      13,  66 Oct 25 12:50 event2
+lrwxrwxrwx    1 root     root             6 Oct 25 12:50 touchscreen0 -> event1
+root@reMarkable:/dev/input# cd ..
+root@reMarkable:/dev# ls
+autofs           loop3            tty12            tty40            urandom
+block            loop4            tty13            tty41            vcs
+caam-keygen      loop5            tty14            tty42            vcs1
+char             loop6            tty15            tty43            vcs2
+console          loop7            tty16            tty44            vcs3
+cpu_dma_latency  mapper           tty17            tty45            vcs4
+disk             mem              tty18            tty46            vcs5
+fb0              mmcblk2          tty19            tty47            vcs6
+fd               mmcblk2boot0     tty2             tty48            vcs63
+full             mmcblk2boot1     tty20            tty49            vcsa
+fuse             mmcblk2p1        tty21            tty5             vcsa1
+gpiochip0        mmcblk2p2        tty22            tty50            vcsa2
+gpiochip1        mmcblk2p3        tty23            tty51            vcsa3
+gpiochip2        mmcblk2p4        tty24            tty52            vcsa4
+gpiochip3        mmcblk2rpmb      tty25            tty53            vcsa5
+gpiochip4        null             tty26            tty54            vcsa6
+gpiochip5        ptmx             tty27            tty55            vcsa63
+gpiochip6        pts              tty28            tty56            vcsu
+hwrng            random           tty29            tty57            vcsu1
+i2c-0            rfkill           tty3             tty58            vcsu2
+i2c-1            rtc              tty30            tty59            vcsu3
+i2c-2            rtc0             tty31            tty6             vcsu4
+i2c-3            shm              tty32            tty60            vcsu5
+initctl          stderr           tty33            tty61            vcsu6
+input            stdin            tty34            tty62            vcsu63
+kmsg             stdout           tty35            tty63            watchdog
+log              tty              tty36            tty7             watchdog0
+loop-control     tty0             tty37            tty8             zero
+loop0            tty1             tty38            tty9
+loop1            tty10            tty39            ttymxc0
+loop2            tty11            tty4             uinput
+root@reMarkable:/dev# cd uinput
+-sh: cd: uinput: Not a directory
+root@reMarkable:/dev# compgen -c | sort
+!
+.
+..
+...
+:
+[
+[
+[
+[[
+[[
+[[
+]]
+addgroup
+addgroup
+adduser
+adduser
+agetty
+agetty
+alias
+ascii
+ascii
+ash
+ash
+awk
+awk
+badblocks
+badblocks
+base32
+base32
+basename
+basename
+bash
+bash
+bash.bash
+bash.bash
+bg
+bind
+blkid
+blkid
+blkid.util-linux
+blkid.util-linux
+bootctl
+bootctl
+break
+bsdcat
+bsdcat
+bsdunzip
+bsdunzip
+builtin
+bunzip2
+bunzip2
+busctl
+busctl
+busybox
+busybox
+busybox.nosuid
+busybox.nosuid
+busybox.suid
+busybox.suid
+bzcat
+bzcat
+bzip2
+bzip2
+caller
+case
+cat
+cat
+cd
+chage
+chage
+chattr
+chattr
+chfn
+chfn
+chfn.shadow
+chfn.shadow
+chgpasswd
+chgpasswd
+chgrp
+chgrp
+chmod
+chmod
+chown
+chown
+chpasswd
+chpasswd
+chpasswd.shadow
+chpasswd.shadow
+chronyd
+chronyd
+chroot
+chroot
+chsh
+chsh
+chsh.shadow
+chsh.shadow
+chvt
+chvt
+chvt.kbd
+chvt.kbd
+clear
+clear
+cmp
+cmp
+command
+compgen
+complete
+compopt
+continue
+coproc
+core2md
+core2md
+cp
+cp
+cpio
+cpio
+crashuploader
+crashuploader
+crc32
+crc32
+cryptsetup
+cryptsetup
+cryptsetup-ssh
+cryptsetup-ssh
+csl
+csl
+cut
+cut
+date
+date
+dbclient
+dbclient
+dbus-cleanup-sockets
+dbus-cleanup-sockets
+dbus-daemon
+dbus-daemon
+dbus-launch
+dbus-launch
+dbus-monitor
+dbus-monitor
+dbus-run-session
+dbus-run-session
+dbus-send
+dbus-send
+dbus-update-activation-environment
+dbus-update-activation-environment
+dbus-uuidgen
+dbus-uuidgen
+dc
+dc
+dd
+dd
+deallocvt
+deallocvt
+deallocvt.kbd
+deallocvt.kbd
+declare
+delgroup
+delgroup
+deluser
+deluser
+depmod
+depmod
+depmod.kmod
+depmod.kmod
+df
+df
+diff
+diff
+dirname
+dirname
+dirs
+disown
+dmesg
+dmesg
+dmsetup
+dmsetup
+dmstats
+dmstats
+dnsdomainname
+dnsdomainname
+do
+done
+dosfsck
+dosfsck
+dosfslabel
+dosfslabel
+dropbear
+dropbear
+dropbearconvert
+dropbearconvert
+dropbearkey
+dropbearkey
+dropbearmulti
+dropbearmulti
+du
+du
+dump-info
+dump-info
+dump_syms
+dump_syms
+dumpkeys
+dumpkeys
+dumpkmap
+dumpkmap
+dumpleases
+dumpleases
+e2fsck
+e2fsck
+echo
+echo
+echo
+egrep
+egrep
+elif
+else
+enable
+enable-luks
+enable-luks
+env
+env
+esac
+eval
+evtest
+evtest
+exec
+exit
+expiry
+expiry
+export
+expr
+expr
+factory-reset
+factory-reset
+faillog
+faillog
+fakeupdateengine_service
+fakeupdateengine_service
+false
+false
+false
+fatlabel
+fatlabel
+fbset
+fbset
+fc
+fc-cache
+fc-cache
+fc-cat
+fc-cat
+fc-conflist
+fc-conflist
+fc-list
+fc-list
+fc-match
+fc-match
+fc-pattern
+fc-pattern
+fc-query
+fc-query
+fc-scan
+fc-scan
+fc-validate
+fc-validate
+fcntl-lock
+fcntl-lock
+fd
+fdisk
+fdisk
+fg
+fgconsole
+fgconsole
+fgconsole.kbd
+fgconsole.kbd
+fgrep
+fgrep
+fi
+find
+find
+flock
+flock
+for
+free
+free
+fsck
+fsck
+fsck.ext2
+fsck.ext2
+fsck.ext3
+fsck.ext3
+fsck.ext4
+fsck.ext4
+fsck.fat
+fsck.fat
+fsck.msdos
+fsck.msdos
+fsck.util-linux
+fsck.util-linux
+fsck.vfat
+fsck.vfat
+fstrim
+fstrim
+function
+fuser
+fuser
+fw_printenv
+fw_printenv
+fw_setenv
+fw_setenv
+gadget-acm-ecm
+gadget-acm-ecm
+gadget-acm-ecm.libusbg
+gadget-acm-ecm.libusbg
+genl-ctrl-list
+genl-ctrl-list
+getkeycodes
+getkeycodes
+getopt
+getopt
+getopts
+getsubids
+getsubids
+getty
+getty
+gpasswd
+gpasswd
+grep
+grep
+groupadd
+groupadd
+groupdel
+groupdel
+groupmems
+groupmems
+groupmod
+groupmod
+groups
+groups
+groups.shadow
+groups.shadow
+grpck
+grpck
+grpconv
+grpconv
+grpunconv
+grpunconv
+gunzip
+gunzip
+gzip
+gzip
+halt
+halt
+hash
+haveged
+haveged
+head
+head
+help
+hexdump
+hexdump
+history
+hostname
+hostname
+hostnamectl
+hostnamectl
+hwclock
+hwclock
+id
+id
+idiag-socket-details
+idiag-socket-details
+if
+ifconfig
+ifconfig
+ifdown
+ifdown
+ifup
+ifup
+in
+init
+init
+insmod
+insmod
+insmod.kmod
+insmod.kmod
+integritysetup
+integritysetup
+ip
+ip
+iw
+iw
+jo
+jo
+jobs
+journalctl
+journalctl
+jpgicc
+jpgicc
+kbd_mode
+kbd_mode
+kbdinfo
+kbdinfo
+kbdrate
+kbdrate
+kill
+kill
+kill
+killall
+killall
+kmod
+kmod
+l
+ldconfig
+ldconfig
+less
+less
+let
+linkicc
+linkicc
+ll
+ln
+ln
+loadfont
+loadfont
+loadkeys
+loadkeys
+loadkmap
+loadkmap
+loadunimap
+loadunimap
+local
+localectl
+localectl
+logger
+logger
+login
+login
+login.shadow
+login.shadow
+loginctl
+loginctl
+logname
+logname
+logout
+logoutd
+logoutd
+logread
+logread
+losetup
+losetup
+ls
+ls
+lsmod
+lsmod
+lsmod
+lsmod
+lsmod.kmod
+lsmod.kmod
+lsusb
+lsusb
+lsusb.usbutils
+lsusb.usbutils
+lzcat
+lzcat
+makedumpfile
+makedumpfile
+mapfile
+mapscrn
+mapscrn
+md5sum
+md5sum
+mdm-agent
+mdm-agent
+memfault-core-handler
+memfault-core-handler
+memfault-device-info
+memfault-device-info
+memfaultctl
+memfaultctl
+memfaultd
+memfaultd
+mesg
+mesg
+microcom
+microcom
+microdump_stackwalk
+microdump_stackwalk
+migrate_wifi.sh
+migrate_wifi.sh
+migwifi
+migwifi
+minidump-2-core
+minidump-2-core
+minidump_dump
+minidump_dump
+minidump_stackwalk
+minidump_stackwalk
+mkdir
+mkdir
+mkdosfs
+mkdosfs
+mke2fs
+mke2fs
+mke2fs.e2fsprogs
+mke2fs.e2fsprogs
+mkfifo
+mkfifo
+mkfs.ext2
+mkfs.ext2
+mkfs.ext2.e2fsprogs
+mkfs.ext2.e2fsprogs
+mkfs.ext3
+mkfs.ext3
+mkfs.ext4
+mkfs.ext4
+mkfs.fat
+mkfs.fat
+mkfs.msdos
+mkfs.msdos
+mkfs.vfat
+mkfs.vfat
+mkfs.vfat.dosfstools
+mkfs.vfat.dosfstools
+mknod
+mknod
+mkswap
+mkswap
+mktemp
+mktemp
+modinfo
+modinfo
+modinfo.kmod
+modinfo.kmod
+modprobe
+modprobe
+modprobe.kmod
+modprobe.kmod
+more
+more
+mount
+mount
+mount-copybind
+mount-copybind
+mount.ddi
+mount.ddi
+mount.util-linux
+mount.util-linux
+mountpoint
+mountpoint
+mpicalc
+mpicalc
+mv
+mv
+nano
+nano
+nc
+nc
+netstat
+netstat
+networkctl
+networkctl
+newgidmap
+newgidmap
+newgrp
+newgrp
+newgrp.shadow
+newgrp.shadow
+newuidmap
+newuidmap
+newusers
+newusers
+nf-ct-add
+nf-ct-add
+nf-ct-events
+nf-ct-events
+nf-ct-list
+nf-ct-list
+nf-exp-add
+nf-exp-add
+nf-exp-delete
+nf-exp-delete
+nf-exp-list
+nf-exp-list
+nf-log
+nf-log
+nf-monitor
+nf-monitor
+nf-queue
+nf-queue
+nl-addr-add
+nl-addr-add
+nl-addr-delete
+nl-addr-delete
+nl-addr-list
+nl-addr-list
+nl-class-add
+nl-class-add
+nl-class-delete
+nl-class-delete
+nl-class-list
+nl-class-list
+nl-classid-lookup
+nl-classid-lookup
+nl-cls-add
+nl-cls-add
+nl-cls-delete
+nl-cls-delete
+nl-cls-list
+nl-cls-list
+nl-fib-lookup
+nl-fib-lookup
+nl-link-enslave
+nl-link-enslave
+nl-link-ifindex2name
+nl-link-ifindex2name
+nl-link-list
+nl-link-list
+nl-link-name2ifindex
+nl-link-name2ifindex
+nl-link-release
+nl-link-release
+nl-link-set
+nl-link-set
+nl-link-stats
+nl-link-stats
+nl-list-caches
+nl-list-caches
+nl-list-sockets
+nl-list-sockets
+nl-monitor
+nl-monitor
+nl-neigh-add
+nl-neigh-add
+nl-neigh-delete
+nl-neigh-delete
+nl-neigh-list
+nl-neigh-list
+nl-neightbl-list
+nl-neightbl-list
+nl-nh-list
+nl-nh-list
+nl-pktloc-lookup
+nl-pktloc-lookup
+nl-qdisc-add
+nl-qdisc-add
+nl-qdisc-delete
+nl-qdisc-delete
+nl-qdisc-list
+nl-qdisc-list
+nl-route-add
+nl-route-add
+nl-route-delete
+nl-route-delete
+nl-route-get
+nl-route-get
+nl-route-list
+nl-route-list
+nl-rule-list
+nl-rule-list
+nl-tctree-list
+nl-tctree-list
+nl-util-addr
+nl-util-addr
+nohup
+nohup
+nologin
+nologin
+nologin.shadow
+nologin.shadow
+nproc
+nproc
+nslookup
+nslookup
+ocotp-disable-jtag
+ocotp-disable-jtag
+od
+od
+openssl
+openssl
+openvt
+openvt
+openvt.kbd
+openvt.kbd
+opj_compress
+opj_compress
+opj_decompress
+opj_decompress
+opj_dump
+opj_dump
+passwd
+passwd
+passwd.shadow
+passwd.shadow
+patch
+patch
+pgrep
+pgrep
+pid2md
+pid2md
+pidof
+pidof
+pincode-rs
+pincode-rs
+ping
+ping
+ping6
+ping6
+pivot_root
+pivot_root
+popd
+poweroff
+poweroff
+prepare_wifi.sh
+prepare_wifi.sh
+printf
+printf
+printf
+ps
+ps
+psfaddtable
+psfaddtable
+psfgettable
+psfgettable
+psfstriptable
+psfstriptable
+psfxtable
+psfxtable
+psicc
+psicc
+pushd
+pwck
+pwck
+pwconv
+pwconv
+pwd
+pwd
+pwd
+pwunconv
+pwunconv
+rdate
+rdate
+read
+readarray
+readlink
+readlink
+readonly
+realpath
+realpath
+reboot
+reboot
+remarkable-fail.sh
+remarkable-fail.sh
+remarkable-setgoodroot
+remarkable-setgoodroot
+remarkable-shutdown
+remarkable-shutdown
+renice
+renice
+reset
+reset
+resize
+resize
+resize2fs
+resize2fs
+resolvconf
+resolvconf
+resolvectl
+resolvectl
+return
+rev
+rev
+rfkill
+rfkill
+rfkill.util-linux
+rfkill.util-linux
+rm
+rm
+rm-ssh-over-wlan
+rm-ssh-over-wlan
+rm-sync
+rm-sync
+rmdir
+rmdir
+rmmod
+rmmod
+rmmod.kmod
+rmmod.kmod
+rnano
+rnano
+rootdev
+rootdev
+route
+route
+rsync
+rsync
+rsync-ssl
+rsync-ssl
+run-parts
+run-parts
+run-postinsts
+run-postinsts
+runlevel
+runlevel
+scp
+scp
+sed
+sed
+select
+seq
+seq
+set
+setconsole
+setconsole
+setfont
+setfont
+setkeycodes
+setkeycodes
+setleds
+setleds
+setmetamode
+setmetamode
+setsid
+setsid
+setvtrgb
+setvtrgb
+sg
+sg
+sh
+sh
+sha1sum
+sha1sum
+sha256sum
+sha256sum
+shift
+shopt
+show-gadgets
+show-gadgets
+show-gadgets.libusbg
+show-gadgets.libusbg
+showconsolefont
+showconsolefont
+showkey
+showkey
+showkey.kbd
+showkey.kbd
+shuf
+shuf
+shutdown
+shutdown
+sleep
+sleep
+sort
+sort
+source
+ssh
+ssh
+start-stop-daemon
+start-stop-daemon
+stat
+stat
+strings
+strings
+stty
+stty
+su
+su
+su.shadow
+su.shadow
+sulogin
+sulogin
+sulogin.util-linux
+sulogin.util-linux
+suspend
+swapoff
+swapoff
+swapoff.util-linux
+swapoff.util-linux
+swapon
+swapon
+swapon.util-linux
+swapon.util-linux
+switch_root
+switch_root
+swupdate
+swupdate
+swupdate-from-image-file
+swupdate-from-image-file
+swupdate-ipc
+swupdate-ipc
+swupdate-progress
+swupdate-progress
+sync
+sync
+sysctl
+sysctl
+system-hardening
+system-hardening
+systemctl
+systemctl
+systemd-ac-power
+systemd-ac-power
+systemd-ask-password
+systemd-ask-password
+systemd-cat
+systemd-cat
+systemd-cgls
+systemd-cgls
+systemd-cgtop
+systemd-cgtop
+systemd-creds
+systemd-creds
+systemd-cryptsetup
+systemd-cryptsetup
+systemd-delta
+systemd-delta
+systemd-detect-virt
+systemd-detect-virt
+systemd-dissect
+systemd-dissect
+systemd-escape
+systemd-escape
+systemd-firstboot
+systemd-firstboot
+systemd-hwdb
+systemd-hwdb
+systemd-id128
+systemd-id128
+systemd-inhibit
+systemd-inhibit
+systemd-machine-id-setup
+systemd-machine-id-setup
+systemd-mount
+systemd-mount
+systemd-notify
+systemd-notify
+systemd-path
+systemd-path
+systemd-resolve
+systemd-resolve
+systemd-run
+systemd-run
+systemd-socket-activate
+systemd-socket-activate
+systemd-stdio-bridge
+systemd-stdio-bridge
+systemd-sysusers
+systemd-sysusers
+systemd-tmpfiles
+systemd-tmpfiles
+systemd-tty-ask-password-agent
+systemd-tty-ask-password-agent
+systemd-umount
+systemd-umount
+tail
+tail
+tar
+tar
+tee
+tee
+telinit
+telinit
+telnet
+telnet
+test
+test
+test
+tftp
+tftp
+then
+tificc
+tificc
+time
+time
+time
+timedatectl
+timedatectl
+times
+top
+top
+touch
+touch
+tr
+tr
+traceroute
+traceroute
+transicc
+transicc
+trap
+true
+true
+true
+ts
+ts
+tty
+tty
+type
+typeset
+udevadm
+udevadm
+udevadm
+udevadm
+udevd
+udevd
+udhcpc
+udhcpc
+udhcpd
+udhcpd
+ulimit
+umask
+umount
+umount
+umount.util-linux
+umount.util-linux
+unalias
+uname
+uname
+unicode_start
+unicode_start
+unicode_stop
+unicode_stop
+uniq
+uniq
+unlink
+unlink
+unset
+until
+unzip
+unzip
+update-alternatives
+update-alternatives
+update-ca-certificates
+update-ca-certificates
+update-mime-database
+update-mime-database
+update-rc.d
+update-rc.d
+uptime
+uptime
+usb-devices
+usb-devices
+usb-ether-once
+usb-ether-once
+usbhid-dump
+usbhid-dump
+user-authenticator-cli
+user-authenticator-cli
+useradd
+useradd
+userdel
+userdel
+usermod
+usermod
+users
+users
+usleep
+usleep
+uuidgen
+uuidgen
+uuidgen.util-linux
+uuidgen.util-linux
+varlinkctl
+varlinkctl
+veritysetup
+veritysetup
+vi
+vi
+vigr
+vigr
+vigr.shadow
+vigr.shadow
+vim
+vim
+vim.tiny
+vim.tiny
+vipw
+vipw
+vipw.shadow
+vipw.shadow
+vlock
+vlock
+wacom_flash_g14
+wacom_flash_g14
+wacom_flash_g15
+wacom_flash_g15
+wacom_flash_rm11x.sh
+wacom_flash_rm11x.sh
+wait
+wait-for-home
+wait-for-home
+watch
+watch
+wc
+wc
+wget
+wget
+whatislove
+which
+which
+while
+who
+who
+whoami
+whoami
+wpa_cli
+wpa_cli
+wpa_passphrase
+wpa_passphrase
+wpa_supplicant
+wpa_supplicant
+xargs
+xargs
+xochitl
+xochitl
+xochitl_pdf_renderer
+xochitl_pdf_renderer
+xzcat
+xzcat
+yat2m
+yat2m
+yes
+yes
+zcat
+zcat
+{
+}
+root@reMarkable:/dev# which
+BusyBox v1.36.1 () multi-call binary.
+
+Usage: which [-a] COMMAND...
+root@reMarkable:/dev# which opkg
+root@reMarkable:/dev# which opkg apt dpkg pacman 2>/dev/null
+root@reMarkable:/dev# opkg list-installed 2>/dev/null
+root@reMarkable:/dev# opkg
+-sh: opkg: command not found
+root@reMarkable:/dev# ls /usr/lib/ | grep -E "\.so|qt|x11" 2>/dev/null
+ld-linux-armhf.so.3
+libBrokenLocale.so.1
+libKF6Archive.so.6
+libKF6Archive.so.6.7.0
+libQt6Concurrent.so.6
+libQt6Concurrent.so.6.8.2
+libQt6Core.so.6
+libQt6Core.so.6.8.2
+libQt6DBus.so.6
+libQt6DBus.so.6.8.2
+libQt6Gui.so.6
+libQt6Gui.so.6.8.2
+libQt6LabsAnimation.so.6
+libQt6LabsAnimation.so.6.8.2
+libQt6LabsFolderListModel.so.6
+libQt6LabsFolderListModel.so.6.8.2
+libQt6LabsPlatform.so.6
+libQt6LabsPlatform.so.6.8.2
+libQt6LabsQmlModels.so.6
+libQt6LabsQmlModels.so.6.8.2
+libQt6LabsSettings.so.6
+libQt6LabsSettings.so.6.8.2
+libQt6LabsSharedImage.so.6
+libQt6LabsSharedImage.so.6.8.2
+libQt6Network.so.6
+libQt6Network.so.6.8.2
+libQt6Qml.so.6
+libQt6Qml.so.6.8.2
+libQt6QmlCompiler.so.6
+libQt6QmlCompiler.so.6.8.2
+libQt6QmlCore.so.6
+libQt6QmlCore.so.6.8.2
+libQt6QmlMeta.so.6
+libQt6QmlMeta.so.6.8.2
+libQt6QmlModels.so.6
+libQt6QmlModels.so.6.8.2
+libQt6QmlNetwork.so.6
+libQt6QmlNetwork.so.6.8.2
+libQt6QmlWorkerScript.so.6
+libQt6QmlWorkerScript.so.6.8.2
+libQt6QmlXmlListModel.so.6
+libQt6QmlXmlListModel.so.6.8.2
+libQt6Quick.so.6
+libQt6Quick.so.6.8.2
+libQt6QuickControls2.so.6
+libQt6QuickControls2.so.6.8.2
+libQt6QuickControls2Basic.so.6
+libQt6QuickControls2Basic.so.6.8.2
+libQt6QuickControls2BasicStyleImpl.so.6
+libQt6QuickControls2BasicStyleImpl.so.6.8.2
+libQt6QuickControls2Fusion.so.6
+libQt6QuickControls2Fusion.so.6.8.2
+libQt6QuickControls2FusionStyleImpl.so.6
+libQt6QuickControls2FusionStyleImpl.so.6.8.2
+libQt6QuickControls2Imagine.so.6
+libQt6QuickControls2Imagine.so.6.8.2
+libQt6QuickControls2ImagineStyleImpl.so.6
+libQt6QuickControls2ImagineStyleImpl.so.6.8.2
+libQt6QuickControls2Impl.so.6
+libQt6QuickControls2Impl.so.6.8.2
+libQt6QuickControls2Material.so.6
+libQt6QuickControls2Material.so.6.8.2
+libQt6QuickControls2MaterialStyleImpl.so.6
+libQt6QuickControls2MaterialStyleImpl.so.6.8.2
+libQt6QuickControls2Universal.so.6
+libQt6QuickControls2Universal.so.6.8.2
+libQt6QuickControls2UniversalStyleImpl.so.6
+libQt6QuickControls2UniversalStyleImpl.so.6.8.2
+libQt6QuickDialogs2.so.6
+libQt6QuickDialogs2.so.6.8.2
+libQt6QuickDialogs2QuickImpl.so.6
+libQt6QuickDialogs2QuickImpl.so.6.8.2
+libQt6QuickDialogs2Utils.so.6
+libQt6QuickDialogs2Utils.so.6.8.2
+libQt6QuickLayouts.so.6
+libQt6QuickLayouts.so.6.8.2
+libQt6QuickShapes.so.6
+libQt6QuickShapes.so.6.8.2
+libQt6QuickTemplates2.so.6
+libQt6QuickTemplates2.so.6.8.2
+libQt6QuickTest.so.6
+libQt6QuickTest.so.6.8.2
+libQt6QuickVectorImage.so.6
+libQt6QuickVectorImage.so.6.8.2
+libQt6QuickVectorImageGenerator.so.6
+libQt6QuickVectorImageGenerator.so.6.8.2
+libQt6Svg.so.6
+libQt6Svg.so.6.8.2
+libQt6Test.so.6
+libQt6Test.so.6.8.2
+libQt6WebSockets.so.6
+libQt6WebSockets.so.6.8.2
+libQt6Xml.so.6
+libQt6Xml.so.6.8.2
+libQtWebAppGlobal.so.1
+libQtWebAppGlobal.so.1.8.3
+libQtWebAppHttpServer.so.1
+libQtWebAppHttpServer.so.1.8.3
+libQtWebAppLogging.so.1
+libQtWebAppLogging.so.1.8.3
+libabsl_base.so.2401.0.0
+libabsl_city.so.2401.0.0
+libabsl_cord.so.2401.0.0
+libabsl_cord_internal.so.2401.0.0
+libabsl_cordz_functions.so.2401.0.0
+libabsl_cordz_handle.so.2401.0.0
+libabsl_cordz_info.so.2401.0.0
+libabsl_crc32c.so.2401.0.0
+libabsl_crc_cord_state.so.2401.0.0
+libabsl_crc_internal.so.2401.0.0
+libabsl_debugging_internal.so.2401.0.0
+libabsl_demangle_internal.so.2401.0.0
+libabsl_die_if_null.so.2401.0.0
+libabsl_examine_stack.so.2401.0.0
+libabsl_exponential_biased.so.2401.0.0
+libabsl_graphcycles_internal.so.2401.0.0
+libabsl_hash.so.2401.0.0
+libabsl_int128.so.2401.0.0
+libabsl_kernel_timeout_internal.so.2401.0.0
+libabsl_log_globals.so.2401.0.0
+libabsl_log_internal_check_op.so.2401.0.0
+libabsl_log_internal_conditions.so.2401.0.0
+libabsl_log_internal_format.so.2401.0.0
+libabsl_log_internal_globals.so.2401.0.0
+libabsl_log_internal_log_sink_set.so.2401.0.0
+libabsl_log_internal_message.so.2401.0.0
+libabsl_log_internal_nullguard.so.2401.0.0
+libabsl_log_internal_proto.so.2401.0.0
+libabsl_log_sink.so.2401.0.0
+libabsl_low_level_hash.so.2401.0.0
+libabsl_malloc_internal.so.2401.0.0
+libabsl_raw_hash_set.so.2401.0.0
+libabsl_raw_logging_internal.so.2401.0.0
+libabsl_spinlock_wait.so.2401.0.0
+libabsl_stacktrace.so.2401.0.0
+libabsl_status.so.2401.0.0
+libabsl_statusor.so.2401.0.0
+libabsl_str_format_internal.so.2401.0.0
+libabsl_strerror.so.2401.0.0
+libabsl_strings.so.2401.0.0
+libabsl_strings_internal.so.2401.0.0
+libabsl_symbolize.so.2401.0.0
+libabsl_synchronization.so.2401.0.0
+libabsl_time.so.2401.0.0
+libabsl_time_zone.so.2401.0.0
+libacl.so.1
+libacl.so.1.1.2302
+libanl.so.1
+libarchive.so.13
+libarchive.so.13.7.9
+libattr.so.1
+libattr.so.1.1.2501
+libblkid.so.1
+libblkid.so.1.1.0
+libboost_filesystem.so.1.84.0
+libbz2.so.1
+libbz2.so.1.0.8
+libc.so.6
+libcairo.so.2
+libcairo.so.2.11800.0
+libcap.so.2
+libcap.so.2.69
+libcom_err.so.2
+libcom_err.so.2.1
+libconfig.so.11
+libconfig.so.11.1.0
+libcrypt.so.2
+libcrypt.so.2.0.0
+libcrypto.so.3
+libcryptsetup.so.12
+libcryptsetup.so.12.10.0
+libcslcommon.so.0
+libcslcommon.so.0.0.1
+libcsldbus.so.0
+libcsldbus.so.0.0.1
+libcsldeviceinfo.so.0
+libcsldeviceinfo.so.0.0.1
+libcsldevicelock.so.0
+libcsldevicelock.so.0.0.1
+libcslmetrics.so.0
+libcslmetrics.so.0.0.1
+libcslota.so.0
+libcslota.so.0.0.1
+libcslpower.so.0
+libcslpower.so.0.0.1
+libcslsensors.so.0
+libcslsensors.so.0.0.1
+libcslserialnumbers.so.0
+libcslserialnumbers.so.0.0.1
+libcslsystemclock.so.0
+libcslsystemclock.so.0.0.1
+libcslwakeup.so.0
+libcslwakeup.so.0.0.1
+libcslwifi.so.0
+libcslwifi.so.0.0.1
+libcurl.so.4
+libcurl.so.4.8.0
+libdatachannel.so.0.17.12
+libdbus-1.so.3
+libdbus-1.so.3.32.4
+libdevmapper.so.1.02
+libdl.so.2
+libdrm.so.2
+libdrm.so.2.4.0
+libdw-0.191.so
+libdw.so.1
+libe2p.so.2
+libe2p.so.2.3
+libelf-0.191.so
+libelf.so.1
+libexpat.so.1
+libexpat.so.1.10.0
+libext2fs.so.2
+libext2fs.so.2.4
+libfdisk.so.1
+libfdisk.so.1.1.0
+libffi.so.8
+libffi.so.8.1.4
+libfmt.so.10
+libfmt.so.10.2.1
+libfontconfig.so.1
+libfontconfig.so.1.12.1
+libfreetype.so.6
+libfreetype.so.6.20.1
+libgcc_s.so.1
+libgcrypt.so.20
+libgcrypt.so.20.4.3
+libgio-2.0.so.0
+libgio-2.0.so.0.7800.6
+libglib-2.0.so.0
+libglib-2.0.so.0.7800.6
+libgmodule-2.0.so.0
+libgmodule-2.0.so.0.7800.6
+libgobject-2.0.so.0
+libgobject-2.0.so.0.7800.6
+libgpg-error.so.0
+libgpg-error.so.0.35.0
+libgthread-2.0.so.0
+libgthread-2.0.so.0.7800.6
+libharfbuzz-cairo.so.0
+libharfbuzz-cairo.so.0.60830.0
+libharfbuzz-gobject.so.0
+libharfbuzz-gobject.so.0.60830.0
+libharfbuzz.so.0
+libharfbuzz.so.0.60830.0
+libhavege.so.2
+libhavege.so.2.0.0
+libicudata.so.74
+libicudata.so.74.2
+libicui18n.so.74
+libicui18n.so.74.2
+libicuuc.so.74
+libicuuc.so.74.2
+libidn2.so.0
+libidn2.so.0.4.0
+libjpeg.so.62
+libjpeg.so.62.4.0
+libjson-c.so.5
+libjson-c.so.5.3.0
+libkmod.so.2
+libkmod.so.2.4.1
+liblcms2.so.2
+liblcms2.so.2.0.16
+liblzma.so.5
+liblzma.so.5.4.7
+libm.so.6
+libmount.so.1
+libmount.so.1.1.0
+libncursesw.so.5
+libncursesw.so.5.9
+libnghttp2.so.14
+libnghttp2.so.14.28.0
+libnl-3.so.200
+libnl-3.so.200.26.0
+libnl-cli-3.so.200
+libnl-cli-3.so.200.26.0
+libnl-genl-3.so.200
+libnl-genl-3.so.200.26.0
+libnl-idiag-3.so.200
+libnl-idiag-3.so.200.26.0
+libnl-nf-3.so.200
+libnl-nf-3.so.200.26.0
+libnl-route-3.so.200
+libnl-route-3.so.200.26.0
+libnsl.so.1
+libnss_compat.so.2
+libnss_dns.so.2
+libnss_files.so.2
+libnss_myhostname.so.2
+libnss_resolve.so.2
+libopenjp2.so.2.5.3
+libopenjp2.so.7
+libpaho-mqtt3a.so.1
+libpaho-mqtt3a.so.1.3.10
+libpaho-mqtt3as.so.1
+libpaho-mqtt3as.so.1.3.10
+libpaho-mqtt3c.so.1
+libpaho-mqtt3c.so.1.3.10
+libpaho-mqtt3cs.so.1
+libpaho-mqtt3cs.so.1.3.10
+libpaho-mqttpp3.so.1
+libpaho-mqttpp3.so.1.2.0
+libpcre2-16.so.0
+libpcre2-16.so.0.12.0
+libpcre2-8.so.0
+libpcre2-8.so.0.12.0
+libpcre2-posix.so.3
+libpcre2-posix.so.3.0.5
+libpdfium.so
+libpixman-1.so.0
+libpixman-1.so.0.42.2
+libpng16.so.16
+libpng16.so.16.41.0
+libpopt.so.0
+libpopt.so.0.0.2
+libprotobuf-c.so.1
+libprotobuf-c.so.1.0.0
+libprotobuf.so.25.8.0
+libpsx.so.2
+libpsx.so.2.69
+libpthread.so.0
+libresolv.so.2
+librt.so.1
+libsmartcols.so.1
+libsmartcols.so.1.1.0
+libspdlog.so.1.13
+libspdlog.so.1.13.0
+libssh.so.4
+libssh.so.4.9.6
+libssl.so.3
+libstdc++.so.6
+libstdc++.so.6.0.32
+libsubid.so.4
+libsubid.so.4.0.0
+libswupdate.so.0.1
+libsystemd.so.0
+libsystemd.so.0.38.0
+libtiff.so.6
+libtiff.so.6.0.2
+libtinfo.so.5
+libtinfo.so.5.9
+libubootenv.so.0
+libubootenv.so.0.3.5
+libudev.so.1
+libudev.so.1.7.8
+libunistring.so.5
+libunistring.so.5.1.0
+libusb-1.0.so.0
+libusb-1.0.so.0.4.0
+libusbg.so.0
+libusbg.so.0.0.1
+libutil.so.1
+libuuid.so.1
+libuuid.so.1.3.0
+libxml2.so.2
+libxml2.so.2.12.10
+libyaml-0.so.2
+libyaml-0.so.2.0.9
+libz.so.1
+libz.so.1.3.1
+libzstd.so.1
+libzstd.so.1.5.5
+root@reMarkable:/dev# which xclip xsel xdotool uinput qt qmake python python3 nodejs 2>/dev/null
+root@reMarkable:/dev# # Graphics/rendering tools
+ convert imagemagick ffmpeg graphicsmagick inkscape 2>/dev/null
+root@reMarkable:/dev# which convert imagemagick ffmpeg graphicsmagick inkscape 2>/dev/null
+hich evtest uinput xdotool xclip xsel 2>/dev/null
+
+# Development tools
+which gcc g++ make cmake qmake pkg-config 2>/dev/null
+
+# Scripting
+which python python3 lua perl bash sh 2>/dev/null
+
+root@reMarkable:/dev#

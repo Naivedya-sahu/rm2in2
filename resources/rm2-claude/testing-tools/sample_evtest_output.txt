@@ -1,0 +1,50 @@
+Input driver version is 1.0.1
+Input device ID: bus 0x18 vendor 0x56a product 0x0 version 0x54
+Input device name: "Wacom I2C Digitizer"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 320 (BTN_TOUCH)
+    Event code 321 (BTN_STYLUS)
+    Event code 330 (BTN_TOOL_PEN)
+  Event type 3 (EV_ABS)
+    Event code 0 (ABS_X)
+      Value  10483
+      Min        0
+      Max    20967
+      Resolution 100
+    Event code 1 (ABS_Y)
+      Value   7862
+      Min        0
+      Max    15725
+      Resolution 100
+    Event code 24 (ABS_PRESSURE)
+      Value      0
+      Min        0
+      Max     4095
+    Event code 25 (ABS_DISTANCE)
+      Value     63
+      Min        0
+      Max       63
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1732547123.456789, type 3 (EV_ABS), code 0 (ABS_X), value 10483
+Event: time 1732547123.456789, type 3 (EV_ABS), code 1 (ABS_Y), value 7862
+Event: time 1732547123.456789, -------------- SYN_REPORT ------------
+Event: time 1732547123.467890, type 3 (EV_ABS), code 0 (ABS_X), value 10490
+Event: time 1732547123.467890, type 3 (EV_ABS), code 1 (ABS_Y), value 7870
+Event: time 1732547123.467890, type 1 (EV_KEY), code 320 (BTN_TOUCH), value 1
+Event: time 1732547123.467890, -------------- SYN_REPORT ------------
+Event: time 1732547123.478901, type 3 (EV_ABS), code 0 (ABS_X), value 10512
+Event: time 1732547123.478901, type 3 (EV_ABS), code 1 (ABS_Y), value 7895
+Event: time 1732547123.478901, -------------- SYN_REPORT ------------
+Event: time 1732547123.489012, type 3 (EV_ABS), code 0 (ABS_X), value 10545
+Event: time 1732547123.489012, type 3 (EV_ABS), code 1 (ABS_Y), value 7920
+Event: time 1732547123.489012, -------------- SYN_REPORT ------------
+Event: time 1732547123.500123, type 3 (EV_ABS), code 0 (ABS_X), value 10578
+Event: time 1732547123.500123, type 3 (EV_ABS), code 1 (ABS_Y), value 7945
+Event: time 1732547123.500123, -------------- SYN_REPORT ------------
+Event: time 1732547123.511234, type 3 (EV_ABS), code 0 (ABS_X), value 10611
+Event: time 1732547123.511234, type 3 (EV_ABS), code 1 (ABS_Y), value 7970
+Event: time 1732547123.511234, type 1 (EV_KEY), code 320 (BTN_TOUCH), value 0
+Event: time 1732547123.511234, -------------- SYN_REPORT ------------

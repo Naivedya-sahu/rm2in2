@@ -1,0 +1,98 @@
+#!/bin/bash
+# Minimal RM2 Injection Server
+# Single-file server for RM2 stylus injection
+
+HOOK="/opt/inject.so"
+FIFO="/tmp/rm2_inject"
+
+start() {
+    echo "Starting RM2 injection server..."
+
+    # Check hook exists
+    [ ! -f "$HOOK" ] && echo "Error: $HOOK not found" && exit 1
+
+    # Create FIFO
+    rm -f "$FIFO"
+    mkfifo "$FIFO" && chmod 666 "$FIFO"
+
+    # Stop Xochitl
+    systemctl stop xochitl 2>/dev/null
+    killall -9 xochitl 2>/dev/null
+    sleep 1
+
+    # Start Xochitl with hook
+    systemctl set-environment LD_PRELOAD="$HOOK"
+    systemctl start xochitl
+
+    sleep 2
+    [ $(pidof xochitl) ] && echo "✓ Server started" || echo "✗ Failed to start"
+}
+
+stop() {
+    echo "Stopping RM2 injection server..."
+
+    # Clear LD_PRELOAD
+    systemctl unset-environment LD_PRELOAD 2>/dev/null
+
+    # Restart Xochitl normally
+    systemctl restart xochitl 2>/dev/null
+
+    # Clean FIFO
+    rm -f "$FIFO"
+
+    echo "✓ Server stopped"
+}
+
+status() {
+    echo ""
+    echo "RM2 Injection Server Status"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+    # Xochitl status
+    if pidof xochitl >/dev/null; then
+        PID=$(pidof xochitl | awk '{print $1}')
+        echo "Xochitl:  ✓ Running (PID: $PID)"
+
+        # Hook status
+        if grep -q inject.so "/proc/$PID/maps" 2>/dev/null; then
+            echo "Hook:     ✓ Loaded"
+        else
+            echo "Hook:     ✗ Not loaded"
+        fi
+    else
+        echo "Xochitl:  ✗ Not running"
+    fi
+
+    # FIFO status
+    [ -p "$FIFO" ] && echo "FIFO:     ✓ Ready" || echo "FIFO:     ✗ Missing"
+
+    # Hook file
+    [ -f "$HOOK" ] && echo "Hook SO:  ✓ Present" || echo "Hook SO:  ✗ Missing"
+
+    echo ""
+}
+
+case "${1:-}" in
+    start)   start ;;
+    stop)    stop ;;
+    restart) stop; sleep 1; start ;;
+    status)  status ;;
+    *)
+        cat << 'EOF'
+RM2 Injection Server
+
+Usage: server {start|stop|restart|status}
+
+Commands:
+  start    - Start injection server
+  stop     - Stop and clean up
+  restart  - Restart server
+  status   - Show status
+
+Example:
+  /opt/server start
+
+EOF
+        exit 1
+        ;;
+esac

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1404"
+   height="1872"
+   viewBox="0 0 1404 1872"
+   version="1.1">
+
+  <metadata>
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>PEN Commands converted to SVG</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+  <g id="layer1" inkscape:label="Strokes" inkscape:groupmode="layer">
+    <path
+       id="stroke_1"
+       inkscape:label="Stroke 1 (2 points)"
+       style="fill:none;stroke:#0066CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,24.46 L 88.21,24.46" />
+    <path
+       id="stroke_2"
+       inkscape:label="Stroke 2 (2 points)"
+       style="fill:none;stroke:#CC0066;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,31.16 L 88.21,31.16" />
+    <path
+       id="stroke_3"
+       inkscape:label="Stroke 3 (2 points)"
+       style="fill:none;stroke:#00CC66;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 83.48,24.46 L 83.48,31.16" />
+    <path
+       id="stroke_4"
+       inkscape:label="Stroke 4 (4 points)"
+       style="fill:none;stroke:#CC6600;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,39.11 L 78.84,33.13 L 88.21,33.13 L 88.21,39.11" />
+    <path
+       id="stroke_5"
+       inkscape:label="Stroke 5 (2 points)"
+       style="fill:none;stroke:#6600CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 83.48,33.13 L 83.48,37.77" />
+    <path
+       id="stroke_6"
+       inkscape:label="Stroke 6 (3 points)"
+       style="fill:none;stroke:#00CCCC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,41.16 L 88.21,41.16 L 88.21,47.14" />
+    <path
+       id="stroke_7"
+       inkscape:label="Stroke 7 (3 points)"
+       style="fill:none;stroke:#CC0000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,49.20 L 88.21,49.20 L 88.21,55.18" />
+    <path
+       id="stroke_8"
+       inkscape:label="Stroke 8 (10 points)"
+       style="fill:none;stroke:#0000CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,60.54 L 78.84,58.57 L 80.18,57.50 L 86.87,57.50 L 88.21,58.57 L 88.21,62.59 L 86.87,63.66 L 80.18,63.66 L 78.84,62.59 L 78.84,60.54" />
+    <path
+       id="stroke_9"
+       inkscape:label="Stroke 9 (7 points)"
+       style="fill:none;stroke:#0066CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 88.21,70.98 L 78.84,70.98 L 78.84,75.00 L 79.46,76.34 L 82.86,76.34 L 83.48,75.00 L 83.48,70.98" />
+    <path
+       id="stroke_10"
+       inkscape:label="Stroke 10 (2 points)"
+       style="fill:none;stroke:#CC0066;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 83.48,74.29 L 88.21,76.97" />
+    <path
+       id="stroke_11"
+       inkscape:label="Stroke 11 (5 points)"
+       style="fill:none;stroke:#00CC66;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 88.21,79.02 L 78.84,79.02 L 84.20,82.32 L 78.84,85.72 L 88.21,85.72" />
+    <path
+       id="stroke_12"
+       inkscape:label="Stroke 12 (7 points)"
+       style="fill:none;stroke:#CC6600;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 80.80,88.31 L 79.46,89.02 L 79.46,93.04 L 80.80,93.66 L 82.86,93.66 L 88.21,88.31 L 88.21,93.66" />
+    <path
+       id="stroke_13"
+       inkscape:label="Stroke 13 (5 points)"
+       style="fill:none;stroke:#6600CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 78.84,98.39 L 78.84,98.66 L 84.82,98.66 L 84.82,98.39 L 78.84,98.39" />
+    <path
+       id="stroke_14"
+       inkscape:label="Stroke 14 (5 points)"
+       style="fill:none;stroke:#00CCCC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       d="M 86.16,98.39 L 86.16,98.66 L 87.50,98.66 L 87.50,98.39 L 86.16,98.39" />
+  </g>
+</svg>

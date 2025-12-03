@@ -1,0 +1,12 @@
+# Transformation Test 1: No transform (identity)
+
+PEN_DOWN 1000 1000  # origin
+PEN_MOVE 3000 1000  # right
+PEN_MOVE 1000 1000  # back to origin
+PEN_MOVE 1000 3000  # down
+PEN_UP
+
+# Number 1
+PEN_DOWN 5000 5000
+PEN_MOVE 5000 6000
+PEN_UP

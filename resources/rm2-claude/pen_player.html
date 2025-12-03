@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PEN Command Player</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 1rem;
+    }
+    #controls {
+      margin-bottom: 1rem;
+    }
+    canvas {
+      border: 1px solid #888;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <input type="file" id="fileInput" accept=".txt">
+    <label>
+      Speed:
+      <input type="range" id="speed" min="1" max="50" value="10">
+    </label>
+    <button id="clearBtn">Clear</button>
+  </div>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const speedSlider = document.getElementById('speed');
+    const clearBtn = document.getElementById('clearBtn');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let commands = [];
+    let cmdIndex = 0;
+    let penDown = false;
+    let curX = 0, curY = 0;
+    let offsetX = 0, offsetY = 0;
+
+    function resetCanvas() {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#000';
+      penDown = false;
+      cmdIndex = 0;
+    }
+
+    clearBtn.addEventListener('click', () => {
+      resetCanvas();
+      commands = [];
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        commands = parseCommands(text);
+        prepareCanvas(commands);
+        resetCanvas();
+        requestAnimationFrame(step);
+      };
+      reader.readAsText(file);
+    });
+
+    function parseCommands(text) {
+      const lines = text.split(/\r?\n/)
+                        .map(l => l.trim())
+                        .filter(l => l.length > 0);
+
+      const cmds = [];
+      for (const line of lines) {
+        const parts = line.split(/\s+/);
+        const cmd = parts[0];
+        if (cmd === 'PEN_UP' || cmd === 'PEN_up') {
+          cmds.push({ type: 'UP' });
+        } else if (cmd === 'PEN_DOWN' || cmd === 'PEN_down') {
+          const x = parseInt(parts[1], 10);
+          const y = parseInt(parts[2], 10);
+          if (!Number.isNaN(x) && !Number.isNaN(y)) {
+            cmds.push({ type: 'DOWN', x, y });
+          }
+        } else if (cmd === 'PEN_MOVE' || cmd === 'PEN_move') {
+          const x = parseInt(parts[1], 10);
+          const y = parseInt(parts[2], 10);
+          if (!Number.isNaN(x) && !Number.isNaN(y)) {
+            cmds.push({ type: 'MOVE', x, y });
+          }
+        }
+      }
+      return cmds;
+    }
+
+    function prepareCanvas(cmds) {
+      // Find bounding box of all (x,y)
+      let minX = Infinity, minY = Infinity;
+      let maxX = -Infinity, maxY = -Infinity;
+
+      for (const c of cmds) {
+        if (c.type === 'DOWN' || c.type === 'MOVE') {
+          if (c.x < minX) minX = c.x;
+          if (c.y < minY) minY = c.y;
+          if (c.x > maxX) maxX = c.x;
+          if (c.y > maxY) maxY = c.y;
+        }
+      }
+
+      if (!isFinite(minX)) {
+        // no coordinates
+        return;
+      }
+
+      const margin = 10;
+      const width = (maxX - minX) + 2 * margin;
+      const height = (maxY - minY) + 2 * margin;
+
+      // Resize canvas to fit content (keeping 1:1 coordinate scale)
+      canvas.width = Math.max(50, width);
+      canvas.height = Math.max(50, height);
+
+      offsetX = margin - minX;
+      offsetY = margin - minY;
+    }
+
+    function step() {
+      if (cmdIndex >= commands.length) {
+        return; // finished
+      }
+
+      const speed = parseInt(speedSlider.value, 10); // commands per frame
+
+      for (let n = 0; n < speed && cmdIndex < commands.length; n++, cmdIndex++) {
+        const c = commands[cmdIndex];
+
+        if (c.type === 'UP') {
+          penDown = false;
+        } else if (c.type === 'DOWN') {
+          const x = c.x + offsetX;
+          const y = c.y + offsetY;
+          curX = x;
+          curY = y;
+          penDown = true;
+        } else if (c.type === 'MOVE') {
+          const x = c.x + offsetX;
+          const y = c.y + offsetY;
+          if (penDown) {
+            ctx.beginPath();
+            ctx.moveTo(curX, curY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+          }
+          curX = x;
+          curY = y;
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // Initial setup
+    resetCanvas();
+  </script>
+</body>
+</html>
