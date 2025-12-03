@@ -20,42 +20,44 @@ import sys
 from pathlib import Path
 import math
 
-# Display dimensions (SVG/design space)
+# Display dimensions (SVG/design space) - portrait orientation
 DISPLAY_WIDTH = 1404
 DISPLAY_HEIGHT = 1872
 
-# Wacom hardware range
-WACOM_MAX_X = 20966
-WACOM_MAX_Y = 15725
+# NOTE: inject.c now handles the transformation to Wacom coordinates
+# We generate coordinates in DISPLAY space (1404×1872)
 
 
 class Transform:
-    """Base class for coordinate transformations."""
+    """Base class for coordinate transformations.
+
+    NOW: We just pass through display coordinates.
+    The inject.c on the RM2 handles the actual transformation to Wacom space.
+    """
 
     def __init__(self, name, description):
         self.name = name
         self.description = description
 
     def transform(self, svg_x, svg_y):
-        """Transform SVG coordinates to Wacom coordinates."""
-        raise NotImplementedError
+        """Pass through display coordinates - inject.c will transform."""
+        return svg_x, svg_y
 
     def to_pen_command(self, svg_x, svg_y):
-        """Convert SVG coordinates to PEN command coordinates."""
-        wx, wy = self.transform(svg_x, svg_y)
-        return int(round(wx)), int(round(wy))
+        """Convert SVG coordinates to PEN command (display space)."""
+        x, y = self.transform(svg_x, svg_y)
+        return int(round(x)), int(round(y))
 
 
 class TransformA(Transform):
-    """Direct mapping - no rotation."""
+    """Pass through - inject.c handles transformation."""
 
     def __init__(self):
-        super().__init__("A_Direct", "Direct scale, no rotation")
+        super().__init__("CORRECT", "Display coordinates (inject.c transforms)")
 
     def transform(self, svg_x, svg_y):
-        wacom_x = (svg_x / DISPLAY_WIDTH) * WACOM_MAX_X
-        wacom_y = (svg_y / DISPLAY_HEIGHT) * WACOM_MAX_Y
-        return wacom_x, wacom_y
+        # Pass through display coordinates
+        return svg_x, svg_y
 
 
 class TransformB(Transform):
@@ -142,10 +144,9 @@ class TransformH(Transform):
         return wacom_x, wacom_y
 
 
-# All transformations to test
+# Single correct transformation (inject.c handles the rest)
 ALL_TRANSFORMS = [
-    TransformA(), TransformB(), TransformC(), TransformD(),
-    TransformE(), TransformF(), TransformG(), TransformH()
+    TransformA()
 ]
 
 
