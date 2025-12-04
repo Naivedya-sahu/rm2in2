@@ -1,0 +1,37 @@
+# test3_corners.txt
+# TEST 3: Corners - 4 corners + center, each 100px from edge
+#
+# Display coordinates (1404x1872 portrait)
+# X: 0=left, 1404=right
+# Y: 0=top, 1872=bottom
+#
+
+# Top-Left (100, 100)
+PEN_DOWN 100 100
+DELAY 50
+PEN_UP
+DELAY 100
+
+# Top-Right (1304, 100)
+PEN_DOWN 1304 100
+DELAY 50
+PEN_UP
+DELAY 100
+
+# Bottom-Left (100, 1772)
+PEN_DOWN 100 1772
+DELAY 50
+PEN_UP
+DELAY 100
+
+# Bottom-Right (1304, 1772)
+PEN_DOWN 1304 1772
+DELAY 50
+PEN_UP
+DELAY 100
+
+# Center (702, 936)
+PEN_DOWN 702 936
+DELAY 50
+PEN_UP
+DELAY 100
