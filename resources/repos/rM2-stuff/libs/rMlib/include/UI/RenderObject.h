@@ -1,0 +1,456 @@
+#pragma once
+
+#include <Input.h>
+
+#include <UI/BuildContext.h>
+#include <UI/TypeID.h>
+#include <UI/Util.h>
+
+#include <algorithm>
+
+namespace rmlib {
+
+class AppContext;
+class RenderObject;
+
+struct BuildContext {
+  const RenderObject& renderObject; // NOLINT (TODO)
+  const BuildContext* parent;
+
+  BuildContext(const RenderObject& ro, const BuildContext* parent)
+    : renderObject(ro), parent(parent) {}
+
+  template<typename RO>
+  const RO* getRenderObject() const;
+};
+
+class RenderObject {             // NOLINT (DEBUG, custom destructor)
+  static inline int roCount = 0; // NOLINT (DEBUG)
+
+public:
+  RenderObject(type_id::TypeIdT typeID) : mID(roCount++), mTypeID(typeID) {
+#ifndef NDEBUG
+    std::cout << "alloc RO: " << mID << "\n";
+#endif
+  }
+
+  virtual ~RenderObject() {
+#ifndef NDEBUG
+    std::cout << "free RO: " << mID << "\n";
+#endif
+    roCount--;
+  }
+
+  Size layout(const Constraints& constraints) {
+    if (needsLayout() || constraints != lastConstraints) {
+      lastConstraints = constraints;
+
+      const auto result = doLayout(constraints);
+      assert(result.width != Constraints::unbound &&
+             result.height != Constraints::unbound);
+      assert(constraints.contain(result));
+
+      mNeedsLayout = false;
+
+      lastSize = result;
+      return result;
+    }
+    return lastSize;
+  }
+
+  virtual UpdateRegion cleanup(rmlib::Canvas& canvas) {
+    if (isFullDraw()) {
+      canvas.set(cleanupRect, rmlib::white);
+      return UpdateRegion{ cleanupRect, rmlib::fb::Waveform::DU };
+    }
+    return {};
+  }
+
+  UpdateRegion draw(rmlib::Canvas& canvas, Point offset) {
+    auto result = UpdateRegion{};
+
+    // TODO: do we need to distinguish when cleanup is used?
+    if (needsDraw()) {
+      const auto rect = Rect{ offset, offset + lastSize.toPoint() };
+      this->cleanupRect = rect;
+      this->lastOffset = offset;
+
+      auto subCanvas = canvas.subCanvas(rect);
+      auto subRes = doDraw(subCanvas);
+      subRes.region += offset;
+
+      assert(subRes.region.empty() || rect.contains(subRes.region));
+
+      result |= subRes;
+
+      mNeedsDraw = No;
+    }
+
+    return result;
+  }
+
+  virtual void doHandleInput(const input::Event& ev) {}
+  void handleInput(input::Event ev) {
+    std::visit(
+      [this](auto& ev) {
+        if constexpr (input::is_pointer_event<decltype(ev)>) {
+          ev.location -= lastOffset;
+        }
+      },
+      ev);
+    doHandleInput(ev);
+  }
+
+  virtual void rebuild(AppContext& context, const BuildContext* parent) {
+    buildContext.emplace(*this, parent);
+
+    if (mNeedsRebuild) {
+#ifndef NDEBUG
+      mInRebuild = true;
+#endif
+      doRebuild(context, *buildContext);
+      mNeedsRebuild = false;
+
+#ifndef NDEBUG
+      mInRebuild = false;
+#endif
+    }
+  }
+
+  bool needsDraw() {
+    return needsDrawCache.getOrSetTo([this] { return getNeedsDraw(); });
+  }
+
+  bool needsLayout() {
+    return needsLayoutCache.getOrSetTo([this] { return getNeedsLayout(); });
+  }
+
+  Rect getLocalRect() const { return { { 0, 0 }, lastSize.toPoint() }; }
+  rmlib::Rect getSubRect() const { return getLocalRect() + lastOffset; }
+  Rect getCleanupRect() const { return cleanupRect; }
+
+  const Size& getSize() const { return lastSize; }
+
+  virtual void markNeedsLayout() { mNeedsLayout = true; }
+  virtual void markNeedsDraw(bool full = true) {
+    mNeedsDraw = full ? Full : (mNeedsDraw == No ? Partial : mNeedsDraw);
+  }
+
+  void markNeedsRebuild() {
+    assert(!mInRebuild && "Don't mark rebuild from within rebuild()");
+    mNeedsRebuild = true;
+  }
+
+  virtual void reset() {
+    needsLayoutCache.reset();
+    needsDrawCache.reset();
+  }
+
+  type_id::TypeIdT getWidgetTypeID() const { return mTypeID; }
+
+  virtual std::vector<RenderObject*> getChildren() = 0;
+
+protected:
+  virtual Size doLayout(const Constraints& constraints) = 0;
+  virtual UpdateRegion doDraw(rmlib::Canvas& canvas) = 0;
+  virtual void doRebuild(AppContext& context,
+                         const BuildContext& buildContext) {}
+
+  virtual bool getNeedsDraw() const { return mNeedsDraw != No; }
+  virtual bool getNeedsLayout() const { return mNeedsLayout; }
+
+  bool isPartialDraw() const { return mNeedsDraw == Partial; }
+  bool isFullDraw() const { return mNeedsDraw == Full; }
+
+  const BuildContext* getBuildContext() const {
+    return buildContext.has_value() ? &*buildContext : nullptr;
+  }
+
+private:
+  int mID;
+  type_id::TypeIdT mTypeID;
+
+  Size lastSize = { 0, 0 };
+  Constraints lastConstraints = {};
+  Point lastOffset;
+  Rect cleanupRect;
+
+  // TODO: are both needed?
+  CachedBool needsLayoutCache;
+  bool mNeedsLayout = true;
+
+  CachedBool needsDrawCache;
+  // bool mNeedsDraw = true;
+  enum { No, Full, Partial } mNeedsDraw = Full;
+
+  bool mNeedsRebuild = false;
+  std::optional<BuildContext> buildContext;
+
+#ifndef NDEBUG
+protected:
+  bool mInRebuild = false; // NOLINT (DEBUG)
+#endif
+};
+
+template<typename Widget>
+class LeafRenderObject : public RenderObject {
+public:
+  using WidgetType = Widget;
+
+  LeafRenderObject(const Widget& widget)
+    : RenderObject(type_id::typeId<Widget>()), widget(&widget) {}
+
+  std::vector<RenderObject*> getChildren() final { return {}; }
+  const Widget& getWidget() { return *widget; }
+
+protected:
+  const Widget* widget;
+};
+
+template<typename Widget>
+class SingleChildRenderObject : public RenderObject {
+public:
+  using WidgetType = Widget;
+
+  SingleChildRenderObject(const Widget& widget)
+    : RenderObject(type_id::typeId<Widget>())
+    , widget(&widget)
+    , child(widget.child.createRenderObject()) {}
+
+  SingleChildRenderObject(const Widget& widget,
+                          std::unique_ptr<RenderObject> child)
+    : RenderObject(type_id::typeId<Widget>())
+    , widget(&widget)
+    , child(std::move(child)) {}
+
+  SingleChildRenderObject(const Widget* widget,
+                          std::unique_ptr<RenderObject> child)
+    : RenderObject(type_id::typeId<Widget>())
+    , widget(widget)
+    , child(std::move(child)) {}
+
+  // SingleChildRenderObject(std::unique_ptr<RenderObject> ro,
+  //                         typeID::type_id_t typeID)
+  //   : RenderObject(typeID), child(std::move(child)) {}
+
+  void doHandleInput(const rmlib::input::Event& ev) override {
+    child->handleInput(ev);
+  }
+
+  UpdateRegion cleanup(rmlib::Canvas& canvas) override {
+    if (isFullDraw()) {
+      return RenderObject::cleanup(canvas);
+    }
+
+    auto subCanvas = canvas.subCanvas(getCleanupRect());
+    auto subRes = child->cleanup(subCanvas);
+    subRes.region += getCleanupRect().topLeft;
+    return subRes;
+  }
+
+  void markNeedsLayout() override {
+    RenderObject::markNeedsLayout();
+    if (child) {
+      child->markNeedsLayout();
+    }
+  }
+
+  void markNeedsDraw(bool full = true) override {
+    RenderObject::markNeedsDraw(full);
+    if (child) {
+      child->markNeedsDraw(full);
+    }
+  }
+
+  void rebuild(AppContext& context, const BuildContext* parent) final {
+    RenderObject::rebuild(context, parent);
+#ifndef NDEBUG
+    mInRebuild = true;
+#endif
+    child->rebuild(context, getBuildContext());
+#ifndef NDEBUG
+    mInRebuild = false;
+#endif
+  }
+
+  void reset() override {
+    RenderObject::reset();
+    child->reset();
+  }
+
+  std::vector<RenderObject*> getChildren() final { return { child.get() }; }
+  const Widget& getWidget() const { return *widget; }
+
+protected:
+  Size doLayout(const Constraints& constraints) override {
+    return child->layout(constraints);
+  }
+
+  UpdateRegion doDraw(rmlib::Canvas& canvas) override {
+    return child->draw(canvas, { 0, 0 });
+  }
+
+  bool getNeedsDraw() const override {
+    return RenderObject::getNeedsDraw() || child->needsDraw();
+  }
+
+  bool getNeedsLayout() const override {
+    return RenderObject::getNeedsLayout() || child->needsLayout();
+  }
+
+  // TODO: fix widget lifetime
+  const Widget* widget;
+  std::unique_ptr<RenderObject> child;
+};
+
+template<typename Widget>
+std::vector<std::unique_ptr<RenderObject>>
+getChildren(const std::vector<Widget>& widgets) {
+
+  std::vector<std::unique_ptr<RenderObject>> children;
+  children.reserve(widgets.size());
+
+  std::transform(widgets.begin(),
+                 widgets.end(),
+                 std::back_inserter(children),
+                 [](const auto& child) { return child.createRenderObject(); });
+
+  return children;
+}
+
+template<typename Widget>
+class MultiChildRenderObject : public RenderObject {
+public:
+  using WidgetType = Widget;
+
+  MultiChildRenderObject(std::vector<std::unique_ptr<RenderObject>> children)
+    : RenderObject(type_id::typeId<Widget>()), children(std::move(children)) {}
+
+  void doHandleInput(const rmlib::input::Event& ev) override {
+    for (const auto& child : children) {
+      child->handleInput(ev);
+    }
+  }
+
+  UpdateRegion cleanup(rmlib::Canvas& canvas) final {
+    if (isFullDraw()) {
+      return RenderObject::cleanup(canvas);
+    }
+
+    auto result = UpdateRegion{};
+    auto subCanvas = canvas.subCanvas(getCleanupRect());
+    const auto offset = getCleanupRect().topLeft;
+    for (const auto& child : children) {
+      auto subRes = child->cleanup(subCanvas);
+      subRes.region += offset;
+      result |= subRes;
+    }
+    return result;
+  }
+
+  void markNeedsLayout() override {
+    RenderObject::markNeedsLayout();
+    for (auto& child : children) {
+      child->markNeedsLayout();
+    }
+  }
+
+  void markNeedsDraw(bool full = true) override {
+    RenderObject::markNeedsDraw(full);
+    for (auto& child : children) {
+      child->markNeedsDraw(full);
+    }
+  }
+
+  void rebuild(AppContext& context, const BuildContext* parent) final {
+    RenderObject::rebuild(context, parent);
+
+#ifndef NDEBUG
+    mInRebuild = true;
+#endif
+    for (const auto& child : children) {
+      child->rebuild(context, getBuildContext());
+    }
+
+#ifndef NDEBUG
+    mInRebuild = false;
+#endif
+  }
+
+  void reset() override {
+    RenderObject::reset();
+    for (const auto& child : children) {
+      child->reset();
+    }
+  }
+
+  std::vector<RenderObject*> getChildren() final {
+    std::vector<RenderObject*> result;
+    result.reserve(children.size());
+    std::transform(children.begin(),
+                   children.end(),
+                   std::back_inserter(result),
+                   [](auto& child) { return child.get(); });
+    return result;
+  }
+
+protected:
+  // template<typename Widget>
+  void updateChildren(const Widget& widget, const Widget& newWidget) {
+
+    auto updateEnd = children.size();
+
+    if (newWidget.children.size() != children.size()) {
+      // TODO: move the ROs out of tree and reuse?
+      if (newWidget.children.size() < children.size()) {
+        children.resize(newWidget.children.size());
+        updateEnd = newWidget.children.size();
+      } else {
+        children.reserve(newWidget.children.size());
+        std::transform(
+          std::next(newWidget.children.begin(), updateEnd),
+          newWidget.children.end(),
+          std::back_inserter(children),
+          [](const auto& child) { return child.createRenderObject(); });
+      }
+    }
+
+    for (size_t i = 0; i < updateEnd; i++) {
+      newWidget.children[i].update(*children[i]);
+    }
+  }
+
+  bool getNeedsDraw() const override {
+    return RenderObject::getNeedsDraw() ||
+           std::any_of(children.begin(), children.end(), [](const auto& child) {
+             return child->needsDraw();
+           });
+  }
+
+  bool getNeedsLayout() const override {
+    return RenderObject::getNeedsLayout() ||
+           std::any_of(children.begin(), children.end(), [](const auto& child) {
+             return child->needsLayout();
+           });
+  }
+
+  std::vector<std::unique_ptr<RenderObject>> children;
+};
+
+template<typename RO>
+const RO*
+BuildContext::getRenderObject() const {
+  const auto widgetTypeID = type_id::typeId<typename RO::WidgetType>();
+
+  if (renderObject.getWidgetTypeID() == widgetTypeID) {
+    return static_cast<const RO*>(&renderObject);
+  }
+
+  if (parent == nullptr) {
+    return nullptr;
+  }
+
+  return parent->getRenderObject<RO>();
+}
+
+} // namespace rmlib

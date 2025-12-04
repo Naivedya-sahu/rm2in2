@@ -1,0 +1,11 @@
+[Unit]
+Description=ReMux Launcher
+After=xochitl.service opt.mount
+
+[Service]
+ExecStart=/opt/bin/remux
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

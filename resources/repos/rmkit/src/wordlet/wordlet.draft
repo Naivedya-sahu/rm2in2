@@ -1,0 +1,3 @@
+name=wordlet
+desc=Wordle clone
+call=/opt/bin/wordlet

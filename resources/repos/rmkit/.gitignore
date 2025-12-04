@@ -1,0 +1,15 @@
+artifacts
+src/cpp/*
+src/.*_cpp/
+fb.png
+fb.pnm
+fb.raw
+screen.*
+output
+tags
+tmp
+*.o
+src/build/
+docs/html/
+.DS_Store
+
