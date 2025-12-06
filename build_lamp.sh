@@ -51,8 +51,8 @@ echo "=== Building lamp ==="
 cd src/lamp
 
 # Direct build without make (to avoid FBInk checks)
-okp \
-    src/build/stb.arm.o \
+CXX=arm-linux-gnueabihf-g++ okp \
+    ../build/stb.arm.o \
     -ig RMKIT_IMPLEMENTATION \
     -ns \
     -ni \
