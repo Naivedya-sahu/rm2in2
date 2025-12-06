@@ -1,0 +1,44 @@
+# Build artifacts
+*.o
+*.so
+*.a
+*.elf
+build/
+*.arm
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Backups
+*.orig
+*.bak
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Compiled lamp
+resources/repos/rmkit/src/build/lamp
+resources/repos/rmkit/src/build/*.o
+resources/repos/rmkit/src/build/*.h
+
+# Temporary files
+/tmp/
+*.tmp
+
+# State files
+/tmp/component_ui_state
+/tmp/component_ui_lock
+
+# rmkit generated files
+resources/repos/rmkit/src/.rmkit.h_cpp/
+resources/repos/rmkit/src/.lamp_cpp/
+resources/repos/rmkit/src/.iago_cpp/
+resources/repos/rmkit/src/.genie_cpp/

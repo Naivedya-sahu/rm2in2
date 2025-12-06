@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40">
+  <!-- Resistor symbol (zigzag) -->
+  <path d="M 0 20 L 20 20 L 25 10 L 35 30 L 45 10 L 55 30 L 65 10 L 75 30 L 80 20 L 100 20"
+        stroke="black" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
