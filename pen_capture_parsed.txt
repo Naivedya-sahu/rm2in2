@@ -1,8 +1,0 @@
-# Parsed pen events
-# Format: X Y PRESSURE
-
-20820 90 51
-20822 15551 27
-211 138 55
-269 15712 9
-10875 7366 1

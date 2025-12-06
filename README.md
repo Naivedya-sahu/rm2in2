@@ -1,168 +1,195 @@
-# rm2in2 - Remarkable 2 Input Injection
+# lamp with Eraser Support
 
-Programmatic pen input injection tool for Remarkable 2 e-ink tablets, enabling automated drawing, handwriting, and graphics rendering.
+Enhanced version of [rmkit's lamp](https://github.com/rmkit-dev/rmkit) with programmatic eraser capabilities for reMarkable tablets.
 
-## Project Status
+## What This Is
 
-🚧 **Under Active Development** - Coordinate system testing phase
+This is a **fork of lamp** that adds eraser tool emulation via `BTN_TOOL_RUBBER` input events, enabling:
+- ✅ Programmatic erasure of drawn strokes
+- ✅ Dynamic self-clearing UI systems
+- ✅ Menu transitions and animations
+- ✅ Professional UX on reMarkable tablets
 
-### Current Focus
-- **Coordinate System Analysis** - Testing multiple transformation approaches
-- **Real Pen Behavior Capture** - Analyzing actual hardware input
-- **Testing Framework** - Building validation tools before implementation
+## The Discovery
 
-## Architecture
+Using `evtest`, we discovered that the reMarkable tablet recognizes `BTN_TOOL_RUBBER` events for the eraser. Just like lamp emulates `BTN_TOOL_PEN` for drawing, we can emulate `BTN_TOOL_RUBBER` for erasing.
 
-This project uses the **LD_PRELOAD** technique (inspired by [recept](https://github.com/funkey/recept)) to intercept input device reads and inject synthetic pen events.
-
-### Components
-
-- **Rm2/** - Server-side code (runs ON the Remarkable 2)
-  - LD_PRELOAD injection hook
-  - Event generation and queueing
-  - FIFO command listener
-
-- **Rm2in2/** - Client-side tools (runs on PC)
-  - SVG/PNG to PEN command conversion
-  - Text to handwriting generation
-  - Command deployment scripts
-
-- **resources/** - Archive of previous attempts and utilities
-
-## Key Differences from Previous Attempts
-
-### Problem with Previous Versions
-All previous implementations (in `resources/previous-versions/`) have fundamental coordinate system issues:
-- ✅ Simple lines work
-- ❌ Curves don't render correctly
-- ❌ Text appears distorted or wrong orientation
-- ❌ Graphics are misaligned
-
-### Root Cause
-- Incorrect coordinate transformation between SVG space, PEN command space, and Wacom sensor space
-- Decimal to integer conversion loses precision
-- Orientation/axis mapping not properly verified against real pen behavior
-
-### New Approach
-1. **Test First** - Capture real pen behavior and analyze coordinate transformations
-2. **Multiple Methods** - Try different transformation approaches systematically
-3. **Validate Early** - Test with simple patterns before complex graphics
-4. **Document Everything** - Record findings to prevent regression
-
-## Hardware Details
-
-- **Device:** Remarkable 2 e-ink tablet
-- **Input:** Wacom EMR digitizer at `/dev/input/event1`
-- **Resolution:** Wacom sensor provides coordinates in range X=0-20966, Y=0-15725
-- **Display:** 1404×1872 pixels (portrait orientation)
-- **Challenge:** Sensor is rotated 90° relative to display orientation
-
-## Coordinate System (Under Investigation)
-
-⚠️ **Current Status: Testing Multiple Approaches**
-
-The relationship between these coordinate spaces needs verification:
-- **SVG Space:** 1404×1872 (portrait, what you design in)
-- **PEN Commands:** ??? (what format to use)
-- **Wacom Hardware:** 0-20966 × 0-15725 (physical sensor)
-- **Display Output:** 1404×1872 (portrait, what you see)
-
-## Development Roadmap
-
-### Phase 1: Coordinate System (Current)
-- [ ] Build pen capture tools
-- [ ] Test transformation approaches
-- [ ] Validate with simple patterns
-- [ ] Document verified coordinate system
-
-### Phase 2: Injection System
-- [ ] Implement verified coordinate transform in inject.c
-- [ ] Build FIFO command parser
-- [ ] Test with lines, curves, and complex shapes
-- [ ] Deploy and validate on device
-
-### Phase 3: Conversion Tools
-- [ ] SVG to PEN converter
-- [ ] PNG bitmap to PEN converter
-- [ ] Text to handwriting generator
-- [ ] Command optimization
-
-### Phase 4: Polish
-- [ ] Error handling and validation
-- [ ] Performance optimization
-- [ ] Documentation and examples
-- [ ] Installation automation
-
-## Quick Start
-
-### 1. Build and Deploy
+## New Eraser Commands
 
 ```bash
-# Build injection hook
-make server
+# Erase a line
+echo "eraser line x1 y1 x2 y2" | lamp
 
-# Deploy to RM2 (with automatic backups and safety checks)
-make deploy RM2_IP=10.11.99.1
+# Erase a rectangle outline
+echo "eraser rectangle x1 y1 x2 y2" | lamp
+
+# Fill/clear an entire area
+echo "eraser fill x1 y1 x2 y2 [spacing]" | lamp
+
+# Dense clearing (complete erasure)
+echo "eraser clear x1 y1 x2 y2" | lamp
+
+# Low-level eraser control
+echo "eraser down x y" | lamp
+echo "eraser move x y" | lamp
+echo "eraser up" | lamp
 ```
 
-### 2. Start Service
+## Build Instructions
+
+### Prerequisites
+
+- ARM cross-compiler: `gcc-arm-linux-gnueabihf` and `g++-arm-linux-gnueabihf`
+- [okp](https://github.com/raisjn/okp) transpiler
+- reMarkable tablet (tested on firmware 3.24)
+
+### Quick Build
 
 ```bash
-# Start injection service on RM2
-make start
+# Clone this repository
+git clone <repo-url>
+cd rm2in2
 
-# Check if running
-make status
+# Build enhanced lamp
+./build_lamp_enhanced.sh
+
+# Binary will be at: resources/repos/rmkit/src/build/lamp
 ```
 
-### 3. Test Coordinate System
+### Deploy to reMarkable
 
 ```bash
-# Generate all test patterns (32 files)
-make test-patterns
+# Copy to device
+scp resources/repos/rmkit/src/build/lamp root@10.11.99.1:/opt/bin/
 
-# Send test patterns one by one
-./Rm2in2/scripts/send.sh test-output/corners_A_Direct.txt
-./Rm2in2/scripts/send.sh test-output/corners_B_Swap.txt
-# ... test all 8 transforms
+# Test
+ssh root@10.11.99.1
 
-# Watch logs in real-time
-make logs
+# Draw something
+echo "pen rectangle 100 100 500 500" | /opt/bin/lamp
+
+# Erase it
+echo "eraser fill 100 100 500 500 15" | /opt/bin/lamp
 ```
 
-### 4. Stop When Done
+## Use Cases
+
+### Dynamic UI Menus
 
 ```bash
-# Stop service and restore normal operation
-make stop
+# Draw menu
+echo "pen rectangle 50 1400 350 1850" | lamp
+
+# User makes selection...
+
+# Clear menu and show next screen
+echo "eraser fill 50 1400 350 1850 15" | lamp
+echo "pen rectangle 370 1400 670 1850" | lamp
 ```
 
-## Deployment System
+### Self-Clearing Component Library
 
-The project uses a **robust service-based deployment** with:
+```bash
+# Show component
+python3 svg_to_lamp.py resistor.svg 700 1600 1.5 | lamp
+python3 text_to_lamp.py "10kΩ" 720 1680 0.5 | lamp
 
-- ✅ **Systemd Integration** - Clean service override approach
-- ✅ **Automatic Backups** - Before every deployment
-- ✅ **Safety Checks** - Validates files and connectivity
-- ✅ **Easy Rollback** - `make restore` for emergency recovery
-- ✅ **Complete Uninstall** - `make undeploy` for clean removal
+# User moves it with lasso tool...
 
-See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for complete details.
+# Clear the preview area
+echo "eraser fill 700 1400 1350 1850 15" | lamp
+```
 
-## Testing
+### Animated Transitions
 
-See [TESTING_GUIDE.md](TESTING_GUIDE.md) for the complete testing workflow to find the correct coordinate transformation.
+```bash
+# Fade out effect
+for spacing in 40 25 15 10; do
+    echo "eraser fill 100 100 500 500 $spacing" | lamp
+    sleep 0.1
+done
+```
 
-## Contributing
+## Technical Details
 
-This is a clean-slate rewrite. Previous code is archived in `resources/previous-versions/` for reference only.
+### How It Works
 
-## License
+The patch adds eraser functions parallel to pen functions:
+- `eraser_down()` uses `BTN_TOOL_RUBBER` instead of `BTN_TOOL_PEN`
+- Same coordinate system and pressure values
+- Same event injection mechanism via `/dev/input/event1`
 
-MIT License (to be added)
+### Patch Contents
+
+- **eraser_down/move/up**: Low-level eraser events
+- **eraser_draw_line**: Erase along a line
+- **eraser_draw_rectangle**: Erase rectangle outline
+- **eraser_fill_area**: Fill region with eraser strokes for complete clearing
+
+### Files in This Repository
+
+```
+.
+├── lamp_eraser.patch              # Patch to add eraser support
+├── build_lamp_enhanced.sh         # Build script
+├── DYNAMIC_UI_WITH_ERASER.md     # Complete documentation
+├── svg_to_lamp.py                 # SVG to lamp converter (optional)
+├── text_to_lamp.py                # Text renderer (optional)
+└── resources/
+    └── repos/
+        └── rmkit/                 # rmkit source (submodule)
+```
+
+## Compatibility
+
+- ✅ Tested on reMarkable 2 firmware 3.24
+- ✅ Works without rm2fb (uses direct input injection)
+- ✅ Compatible with xochitl (native stroke recognition)
+- ✅ No root modifications required
+
+## Documentation
+
+See [DYNAMIC_UI_WITH_ERASER.md](DYNAMIC_UI_WITH_ERASER.md) for:
+- Complete command reference
+- Dynamic UI implementation patterns
+- Animation techniques
+- Optimization strategies
+- Example code
+
+## Utilities Included
+
+### svg_to_lamp.py
+
+Convert SVG files to lamp commands for custom symbols:
+
+```bash
+python3 svg_to_lamp.py resistor.svg 500 800 1.5 | lamp
+```
+
+### text_to_lamp.py
+
+Render text as vector strokes:
+
+```bash
+python3 text_to_lamp.py "Hello" 500 800 0.5 | lamp
+```
 
 ## Credits
 
-- Inspired by [recept](https://github.com/funkey/recept) by funkey
-- Based on LD_PRELOAD input injection technique
-- Built for the Remarkable 2 community
+- Based on [rmkit](https://github.com/rmkit-dev/rmkit) by rmkit-dev
+- Eraser support added by analyzing reMarkable input events
+- Inspired by the reMarkable community's amazing work
+
+## License
+
+This project maintains the same license as rmkit. See the original rmkit repository for license details.
+
+## Related Work
+
+- [rmkit](https://github.com/rmkit-dev/rmkit) - The original toolkit
+- [lamp](https://rmkit.dev/apps/lamp) - Original lamp documentation
+- [reMarkable](https://remarkable.com/) - The reMarkable tablet
+
+---
+
+**Note:** This is a development branch focused solely on lamp eraser enhancement. For complete project history, see the backup branch.
